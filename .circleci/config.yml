@@ -1,0 +1,111 @@
+---
+version: 2.1 # CircleCI configuration version
+
+commands: # https://circleci.com/docs/configuration-reference/#commands
+
+  # This is a custom command to install dependencies.
+  install_dependencies:
+    steps:
+      - restore_cache: # CircleCI will restore the cache if it exists
+          key: &gem_key simplyresearch-cimg-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle config set path './vendor/bundle'
+      - run: bundle install --jobs=4 --retry=3
+
+      - save_cache: # Save the cache for future builds
+          key: *gem_key
+          paths:
+            - ./vendor/bundle
+
+      #- restore_cache:
+      #    name: Restore Yarn Package Cache
+      #    key: &yarn_key simplyresearch-yarn-cimg-{{ checksum "yarn.lock" }}
+
+      #- run:
+      #    name: Install NPM Dependencies via Yarn
+      #    command: yarn install --frozen-lockfile
+
+      #- save_cache:
+      #    name: Save Yarn Package Cache
+      #    key: *yarn_key
+      #    paths:
+      #      - ~/.cache/yarn
+
+# CircleCI Orbs for test coverage analysis and browser testing
+orbs:
+  coveralls: coveralls/coveralls@2.2.5
+  browser-tools: circleci/browser-tools@2.2.0
+
+# CircleCI Job
+jobs:
+
+  build: # Build
+    working_directory: "~/simplyresearch"
+
+    docker:
+      - &ruby_docker
+        image: cimg/ruby:3.4.2-browsers
+        environment:
+          RAILS_ENV: test
+
+    steps:
+      - checkout # This is the step for using `git` to clone the repository (this is a predefined steps)
+      # Custom steps use `run:`
+      - run: sudo apt update && sudo apt install postgresql-client libmsgpack-dev
+      - install_dependencies # (Predefined command)
+      - persist_to_workspace:
+          root: &root "~/simplyresearch"
+          paths:
+            - "*"
+
+  rubocop: # RuboCop Job
+    working_directory: *root
+
+    docker:
+      - *ruby_docker
+
+    steps:
+      - attach_workspace:
+          at: *root
+      # Custom steps use `run:`
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+
+  test:
+    working_directory: *root
+
+    # Docker configuration for CircleCI environment
+    docker:
+      - *ruby_docker
+      - image: postgres:17-alpine # Specifying that we are using PostgreSQL 17 for the database in the Rails app for testing
+        environment:
+          POSTGRES_USER: simplyresearch_user # Credentials for PostgreSQL user
+          POSTGRES_DB: test_db
+          POSTGRES_HOST_AUTH_METHOD: trust
+
+    steps:
+      - attach_workspace:
+          at: *root
+      - browser-tools/install_firefox
+      - run:
+          name: Wait for PostgreSQL
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:migrate
+      - run: bundle exec rake db:migrate RAILS_ENV=test
+      - run:
+          name: Run Rspec
+          command: bundle exec rspec --format progress
+
+workflows:
+  version: 2
+  build_accept_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - rubocop:
+          requires:
+            - build
