@@ -75,11 +75,16 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Install NPM packages
+        env:
+          RAILS_ENV: test
+        run: npm install
+
       - name: Run tests
         env:
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test test:system
+        run: bundle exec rails test
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
