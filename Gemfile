@@ -43,7 +43,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 ## Additional Project Gems
-gem "foreman", "~> 0.88"
+gem "foreman", "~> 0.90"
 gem "vite_rails", "~> 3.0"
 
 gem "aws-sdk-s3", require: false
