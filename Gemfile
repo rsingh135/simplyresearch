@@ -43,7 +43,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 ## Additional Project Gems
-gem "foreman", "~> 0.88"
+gem "foreman", "~> 0.90"
 gem "vite_rails", "~> 3.0"
 
 # Supports S3Mock for file uploads
@@ -64,11 +64,14 @@ group :development, :test do
 
   gem "prettier_print", "~> 1.2"
   gem "rails-controller-testing"
+  gem "rspec", "~> 3.13"
   gem "rspec-rails", "~> 8.0"
 
+  gem "rubocop", "~> 1.79"
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop", "~> 1.78"
   gem "rubocop-rails-omakase", require: false
+  gem "rubocop-rspec_rails", "~> 2.31"
+
   gem "selenium-webdriver", "~> 4.34"
   gem "simplecov", "~> 0.22"
 

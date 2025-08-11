@@ -311,5 +311,6 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], prompt: "select_account", image_aspect_ratio: "square", image_size: 256
+  # Disabling for debugging
+  # config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], prompt: "select_account", image_aspect_ratio: "square", image_size: 256
 end
