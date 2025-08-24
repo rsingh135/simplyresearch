@@ -1,0 +1,23 @@
+// base body colors
+$body-bg: #1a1a1a;
+$body-color: $gray-900;
+
+$primary: #c77dff;
+$secondary: #7b2cbf;
+// $success:       #B2FFA9;
+$info: #c77dff;
+$warning: #b2ffa9;
+// $danger:        $red;
+// $light:         $gray-100;
+// $dark:          $gray-900;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  //   "success":    $success,
+  "info": $info,
+  "warning": $warning,
+  //   "danger":     $danger,
+  //   "light":      $light,
+   //   "dark":       $dark
+);
