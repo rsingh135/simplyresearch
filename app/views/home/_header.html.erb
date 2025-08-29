@@ -20,8 +20,9 @@
         <li class="nav-item">
             <%= link_to 'Users', users_path, class:"nav-link"%>
         </li>
-
-         <% if admin_signed_in? %>
+      </ul>
+    </div>
+    <% if admin_signed_in? %>
 
             <li class="nav-item">
                 <%= link_to 'Add User', new_user_path, class:"nav-link"%>
@@ -36,16 +37,14 @@
             </li>
 
         <% else %>
-            <li class="nav-item">
+            <li class="btn btn-primary nav-item" style="margin-right: 1.8rem;">
                 <%= link_to 'Sign Up', new_admin_registration_path, class:"nav-link"%>
             </li>
 
-            <li class="nav-item">
+            <li class="btn btn-primary nav-item" style="margin-right: 1.8rem;">
                 <%= link_to 'Log In', new_admin_session_path, class:"nav-link"%>
             </li>
         <% end %>
       </ul>
-      
-    </div>
   </div>
 </nav>

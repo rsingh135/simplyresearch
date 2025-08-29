@@ -4,6 +4,7 @@ Rails.application.routes.draw do
           omniauth_callbacks: "admins/omniauth_callbacks"
         }
   resources :users
+  resources :documents
   get "home/about"
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

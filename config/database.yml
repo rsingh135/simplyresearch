@@ -1,40 +1,71 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
+# PostgreSQL
+#   gem install pg
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
+#   Ensure the pg gem is defined in your Gemfile
+#   gem "pg"
 #
+
+
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+ adapter: postgresql
+ encoding: unicode
+ pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+ # PostgreSQL requires a username and password.
+ # It's best practice to use environment variables for these in production,
+ # and Rails credentials for local development.
+ host: <%= ENV["DB_HOST"] || "localhost" %> # Default to localhost, overridden by ENV in production
+
 
 development:
-  <<: *default
-  database: storage/development.sqlite3
+ <<: *default
+ database: simplyresearch_development # PostgreSQL uses database names, not file paths
+ username: <%= Rails.application.credentials.dig(:database, :development, :username) %>
+ password: <%= Rails.application.credentials.dig(:database, :development, :password) %>
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: storage/test.sqlite3
+ <<: *default
+ database: simplyresearch_test
+ username: <%= Rails.application.credentials.dig(:database, :test, :username) %>
+ password: <%= Rails.application.credentials.dig(:database, :test, :password) %>
+
 
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  primary:
-    <<: *default
-    database: storage/production.sqlite3
-  cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
-    migrations_paths: db/cable_migrate
+ primary:
+   <<: *default
+   database: <%= ENV["DB_PRIMARY_DATABASE"] || "your_app_name_production_primary" %>
+   host: <%= ENV["DB_PRIMARY_HOST"] || "primary_db" %>
+   # Ensure your production username and password are set as environment variables
+   username: <%= ENV["DB_PRIMARY_USERNAME"] %>
+   password: <%= ENV["DB_PRIMARY_PASSWORD"] %>
+ cache:
+   <<: *default
+   database: <%= ENV["DB_CACHE_DATABASE"] || "your_app_name_production_cache" %>
+   host: <%= ENV["DB_CACHE_HOST"] || "cache_db" %>
+   migrations_paths: db/cache_migrate
+   username: <%= ENV["DB_CACHE_USERNAME"] %>
+   password: <%= ENV["DB_CACHE_PASSWORD"] %>
+ queue:
+   <<: *default
+   database: <%= ENV["DB_QUEUE_DATABASE"] || "your_app_name_production_queue" %>
+   host: <%= ENV["DB_QUEUE_HOST"] || "queue_db" %>
+   migrations_paths: db/queue_migrate
+   username: <%= ENV["DB_QUEUE_USERNAME"] %>
+   password: <%= ENV["DB_QUEUE_PASSWORD"] %>
+ cable:
+   <<: *default
+   database: <%= ENV["DB_CABLE_DATABASE"] || "your_app_name_production_cable" %>
+   host: <%= ENV["DB_CABLE_HOST"] || "cable_db" %>
+   migrations_paths: db/cable_migrate
+   username: <%= ENV["DB_CABLE_USERNAME"] %>
+   password: <%= ENV["DB_CABLE_PASSWORD"] %>
+
+
+
+
+

@@ -5,7 +5,11 @@ gem "rails", "~> 8.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
+# gem "sqlite3", ">= 2.1"
+
+# Use postgreSQL as the database for Active Record
+gem "pg", "~> 1.1"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -52,6 +56,15 @@ gem "aws-sdk-s3", require: false
 # Used for user sign in with google
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
+
+# Enables background jobs
+gem "good_job"
+
+# Used for parsing PDF files
+gem "pdf-reader"
+
+# Used for Gemini integration
+gem "gemini-ai", "~> 4.3"
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]

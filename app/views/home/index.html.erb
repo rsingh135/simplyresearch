@@ -1,18 +1,26 @@
-<h1>Welcome to SimplyResearch</h1>
-<p class="mx-auto max-w-3xl mb-12 text-break">
+<h1 class="text-center">Welcome to SimplyResearch</h1>
+<p class="mx-auto max-w-3xl mb-12 text-break text-center">
 Upload your PDF research paper and our AI will automatically generate a <br/>
 comprehensive summary and create professional presentation slides in minutes.
 </p>
 
 <%# File Upload Card %>
-<div class="card text-bg-light border-dark mx-auto text-center w-50 center">
-  <div class="card-body">
-    <h5 class="card-title">Upload your research paper</h5>
-    <p class="card-text">Drag and drop your PDF file here, or click to browse</p>
-    <a href="#" class="btn btn-primary">Choose PDF File</a>
+<%= form_with(model: @document) do |form| %>
+  <div class="card text-bg-light border-dark mx-auto text-center w-50 center">
+    <div class="card-body">
+      <h5 class="card-title">Upload your research paper</h5>
+      <p class="card-text">Drag and drop your PDF file here, or click to browse</p>
+      <%= form.file_field :pdf, class: "form-control", accept: "application/pdf", direct_upload: true %>
+      <%= form.text_field :title, class: "form-control mt-3", placeholder: "Title" %>
+    </div>
+    <div class="card-footer text-body-secondary">Supports file uploads up to 10MB</div>
+    <div class="mt-3">
+      <%= form.submit "Upload", class: "btn btn-primary" %>
+    </div>
+    <br/>
   </div>
-  <div class="card-footer text-body-secondary">Supports file uploads up to 10MB</div>
-</div>
+<% end %>
+
 
 <br><br/>
 
