@@ -80,7 +80,7 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop", "~> 1.78"
+  gem "rubocop", "~> 1.80"
   gem "rubocop-rails-omakase", require: false
   gem "selenium-webdriver", "~> 4.34"
   gem "simplecov", "~> 0.22"
