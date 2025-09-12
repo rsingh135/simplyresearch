@@ -1,0 +1,35 @@
+<h1><%= @document.title %></h1>
+
+<% if @document.status == "presentation_generated" %>
+  <div class="success-section">
+    <p>Your presentation has been generated!</p>
+    <%= link_to "Open Presentation", @document.presentation_url, target: "_blank", class: "button" %>
+  </div>
+<% elsif @document.status == "generated" %>
+  <div class="summary-section">
+    <h2>Abstract</h2>
+    <p><%= @document.summary %></p>
+
+    <h2>Key Points</h2>
+    <ul>
+      <% @document.key_points.each do |point| %>
+        <li><%= point %></li>
+      <% end %>
+    </ul>
+    <br>
+    <%= button_to "Generate Presentation", generate_presentation_document_path(@document), method: :post, class: "button" %>
+  </div>
+<% elsif @document.status == "presentation_failed" %>
+  <div class="error-section">
+    <p>An error occurred while generating the presentation. Please try again.</p>
+    <%= button_to "Retry Generation", generate_presentation_document_path(@document), method: :post, class: "button" %>
+  </div>
+<% else %>
+  <div class="processing-section">
+    <p>Your document is being processed. The summary will appear here shortly.</p>
+  </div>
+<% end %>
+
+<hr>
+<%= link_to "Back to Uploads", root_path %>
+

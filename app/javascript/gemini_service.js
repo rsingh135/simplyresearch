@@ -25,15 +25,12 @@ function generateSummary(pdfText, apiKey) {
   ${pdfText.substring(0, 15000)} // Limit input to avoid exceeding token limits
   `;
 
-  return model.generateContent(prompt)
-    .then(result => {
-      const response = result.response;
-      const text = response.text();
-      // The rest of the parsing logic will be in Ruby
-      return text;
-    });
+  return model.generateContent(prompt).then((result) => {
+    const response = result.response;
+    const text = response.text();
+    // The rest of the parsing logic will be in Ruby
+    return text;
+  });
 }
 // This is important for ExecJS to work. It exposes the function to the Ruby environment.
 global.generateSummary = generateSummary;
-
-

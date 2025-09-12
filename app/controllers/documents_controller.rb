@@ -19,6 +19,18 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
   end
 
+  def generate_presentation
+    @document = Document.find(params[:id])
+    admin = current_admin
+    if @document && admin
+      PresentationGeneratorJob.perform_later(@document.id, admin.id)
+      flash[:notice] = "Presentation is being generated. This may take a moment."
+    else
+      flash[:alert] = "Could not generate presentation."
+    end
+    redirect_to @document
+  end
+
   private
 
   def document_params

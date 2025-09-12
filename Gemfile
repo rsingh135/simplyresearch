@@ -66,6 +66,10 @@ gem "pdf-reader"
 # Used for Gemini integration
 gem "gemini-ai", "~> 4.3"
 
+# Used for accessing Google Drive and presentations
+gem "google-apis-slides_v1", "~> 0.31.0"
+gem "google-apis-drive_v3", "~> 0.69.0"
+
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
