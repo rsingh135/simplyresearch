@@ -86,7 +86,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop", "~> 1.78"
   gem "rubocop-rails-omakase", require: false
-  gem "selenium-webdriver", "~> 4.34"
+  gem "selenium-webdriver", "~> 4.36"
   gem "simplecov", "~> 0.22"
 
   gem "syntax_tree", "~> 6.3"
