@@ -140,7 +140,7 @@ class PresentationGeneratorJob < ApplicationJob
            shape_background_fill: {
              solid_fill: {
                color: {
-                 rgb_color: { red: 0.95, green: 0.95, blue: 0.95 } # Light gray background
+                 rgb_color: { red: 0.98, green: 0.98, blue: 0.98 } # Very light gray background for better contrast
                }
              }
            }
@@ -153,11 +153,11 @@ class PresentationGeneratorJob < ApplicationJob
                  content: document.title.to_s,
                  text_style: {
                    font_family: "Arial",
-                   font_size: { magnitude: 24, unit: "PT" },
+                   font_size: { magnitude: 28, unit: "PT" },
                    bold: true,
-                   # CORRECTED: Explicitly set text color to black
+                   # Enhanced: Dark text with better contrast
                    foreground_color: {
-                     rgb_color: { red: 0, green: 0, blue: 0 } # Black text
+                     rgb_color: { red: 0.1, green: 0.1, blue: 0.1 } # Dark gray for better visibility
                    }
                  }
                }
@@ -198,7 +198,7 @@ class PresentationGeneratorJob < ApplicationJob
            shape_background_fill: {
              solid_fill: {
                color: {
-                 rgb_color: { red: 0.95, green: 0.95, blue: 0.95 } # Light gray background
+                 rgb_color: { red: 0.98, green: 0.98, blue: 0.98 } # Very light gray background for better contrast
                }
              }
            }
@@ -211,10 +211,10 @@ class PresentationGeneratorJob < ApplicationJob
                  content: full_content_text,
                  text_style: {
                    font_family: "Arial",
-                   font_size: { magnitude: 12, unit: "PT" },
-                   # CORRECTED: Explicitly set text color to black
+                   font_size: { magnitude: 14, unit: "PT" },
+                   # Enhanced: Dark text with better contrast
                    foreground_color: {
-                     rgb_color: { red: 0, green: 0, blue: 0 } # Black text
+                     rgb_color: { red: 0.1, green: 0.1, blue: 0.1 } # Dark gray for better visibility
                    }
                  }
                }

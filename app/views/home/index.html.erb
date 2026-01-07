@@ -1,73 +1,125 @@
-<h1 class="text-center">Welcome to SimplyResearch</h1>
-<p class="mx-auto max-w-3xl mb-12 text-break text-center">
-Upload your PDF research paper and our AI will automatically generate a <br/>
-comprehensive summary and create professional presentation slides in minutes.
-</p>
-
-<%# File Upload Card %>
-<%= form_with(model: @document) do |form| %>
-  <div class="card text-bg-light border-dark mx-auto text-center w-50 center">
-    <div class="card-body">
-      <h5 class="card-title">Upload your research paper</h5>
-      <p class="card-text">Drag and drop your PDF file here, or click to browse</p>
-      <%= form.file_field :pdf, class: "form-control", accept: "application/pdf", direct_upload: true %>
-      <%= form.text_field :title, class: "form-control mt-3", placeholder: "Title" %>
-    </div>
-    <div class="card-footer text-body-secondary">Supports file uploads up to 10MB</div>
-    <div class="mt-3">
-      <%= form.submit "Upload", class: "btn btn-primary" %>
-    </div>
-    <br/>
+<!-- Hero Section -->
+<div class="hero-section text-center py-4 mb-3">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3 text-primary">Welcome to SimplyResearch</h1>
+    <p class="lead mb-3 mx-auto" style="max-width: 600px;">
+      Transform your research papers into professional presentations in minutes. 
+      Upload your PDF and let our AI create comprehensive summaries and stunning slides automatically.
+    </p>
   </div>
-<% end %>
+</div>
 
-
-<br><br/>
-
-<%# Mini Features Cards %>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 px-3">
-                <div class="card text-bg-dark mb-4 p-4">
-                <div class="items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-file-richtext" viewBox="0 0 16 16">
-                        <path d="M7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208M5 9a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
-                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
-                    </svg>
+<!-- File Upload Section -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-6">
+      <%= form_with(model: @document, class: "upload-form") do |form| %>
+        <div class="card shadow-lg border-0 upload-card">
+          <div class="card-body p-5">
+            <div class="text-center mb-4">
+              <div class="upload-icon mb-3">
+                <div class="upload-icon-bg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-file-earmark-arrow-up text-primary" viewBox="0 0 16 16">
+                    <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z"/>
+                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                  </svg>
                 </div>
-                <h3 class="mb-2">Smart Summarization</h3>
-                <p class="text-left" style="text-align: left">
-                    AI-powered analysis extracts key findings, methodology, and conclusions from your research paper
-                </p>
-                </div>
+              </div>
+              <h4 class="card-title mb-2 text-dark">Upload Your Research Paper</h4>
+              <p class="text-muted">Drag and drop your PDF file here, or click to browse</p>
             </div>
-
-            <div class="col-md-4 px-3">        
-                <div class="card text-bg-dark mb-4 p-4">
-                <div class="items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-easel" viewBox="0 0 16 16">
-                        <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
-                    </svg>
-                </div>
-                <h3 class="mb-2">Auto Slide Generation</h3>
-                <p class="text-left" style="text-align: left">
-                    Automatically creates professional presentation slides with proper formatting and visual hierarchy
-                </p>
-                </div>
+            
+            <div class="mb-3">
+              <%= form.file_field :pdf, class: "form-control form-control-lg file-input", accept: "application/pdf", direct_upload: true, required: true %>
             </div>
-
-            <div class="col-md-4 px-3">
-                <div class="card text-bg-dark mb-4 p-4">
-                <div class="items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-lightning-charge" viewBox="0 0 16 16">
-                        <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z"/>
-                    </svg>
-                </div>
-                <h3 class="mb-2">Lightning Fast</h3>
-                <p class="text-left" style="text-align: left">
-                    Process papers and generate presentations in minutes, not hours. Perfect for conferences and meetings
-                </p>
-                </div>
+            
+            <div class="mb-4">
+              <%= form.text_field :title, class: "form-control dark-input", placeholder: "Enter a title for your research paper (optional)", value: "" %>
+            </div>
+            
+            <div class="d-grid">
+              <%= form.submit "Upload & Process", class: "btn btn-primary btn-lg" %>
+            </div>
+            
+            <div class="text-center mt-3">
+              <small class="text-muted">
+                <i class="bi bi-info-circle me-1"></i>
+                Supports PDF files up to 10MB
+              </small>
             </div>
           </div>
         </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Features Section -->
+<div class="features-section py-5 mt-5">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-12">
+        <h2 class="display-5 fw-bold mb-3 text-white">Why Choose SimplyResearch?</h2>
+        <p class="lead text-white-50">Powerful AI-driven tools designed specifically for researchers and students</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon mb-3">
+              <div class="feature-icon-bg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-file-richtext text-primary" viewBox="0 0 16 16">
+                  <path d="M7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208M5 9a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
+                </svg>
+              </div>
+            </div>
+            <h4 class="card-title mb-3 text-white">Smart Summarization</h4>
+            <p class="card-text text-white-50">
+              AI-powered analysis extracts key findings, methodology, and conclusions from your research paper with precision and accuracy.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon mb-3">
+              <div class="feature-icon-bg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-easel text-primary" viewBox="0 0 16 16">
+                  <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
+                </svg>
+              </div>
+            </div>
+            <h4 class="card-title mb-3 text-white">Auto Slide Generation</h4>
+            <p class="card-text text-white-50">
+              Automatically creates professional presentation slides with proper formatting, visual hierarchy, and academic standards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body text-center p-4">
+            <div class="feature-icon mb-3">
+              <div class="feature-icon-bg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-lightning-charge text-primary" viewBox="0 0 16 16">
+                  <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z"/>
+                </svg>
+              </div>
+            </div>
+            <h4 class="card-title mb-3 text-white">Lightning Fast</h4>
+            <p class="card-text text-white-50">
+              Process papers and generate presentations in minutes, not hours. Perfect for conferences, meetings, and tight deadlines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

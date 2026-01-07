@@ -1,34 +1,55 @@
-<h2>Log in</h2>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <h2 class="h3 mb-3">Welcome Back</h2>
+            <p class="text-muted">Sign in to your SimplyResearch account</p>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field form-group", style="width: 30rem;">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class:"form-control", autocomplete: "email" %>
-  </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "auth-form") do |f| %>
+            <div class="mb-3">
+              <%= f.label :email, class: "form-label" %>
+              <%= f.email_field :email, autofocus: true, class: "form-control form-control-lg", autocomplete: "email", placeholder: "Enter your email" %>
+            </div>
 
-  <div class="field form-group", style="width: 30rem;">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, class:"form-control", autocomplete: "current-password" %>
-  </div>
+            <div class="mb-3">
+              <%= f.label :password, class: "form-label" %>
+              <%= f.password_field :password, class: "form-control form-control-lg", autocomplete: "current-password", placeholder: "Enter your password" %>
+            </div>
 
-  <br/>
+            <% if devise_mapping.rememberable? %>
+              <div class="mb-3 form-check">
+                <%= f.check_box :remember_me, class: "form-check-input" %>
+                <%= f.label :remember_me, "Remember me", class: "form-check-label" %>
+              </div>
+            <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <div class="d-grid mb-3">
+              <%= f.submit "Sign In", class: "btn btn-primary btn-lg" %>
+            </div>
+
+            <div class="text-center mb-3">
+              <span class="text-muted">or</span>
+            </div>
+
+            <div class="d-grid mb-4">
+              <%= button_to admin_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"}, class: "btn btn-outline-danger btn-lg" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-google me-2" viewBox="0 0 16 16">
+                  <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                </svg>
+                Continue with Google
+              <% end %>
+            </div>
+
+            <div class="text-center">
+              <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <br/>
-
-  <div class="btn-group" role="group" aria-label="Log in buttons">
-    <%= f.submit "Log in", class:"btn btn-primary" %>
-    <%= render "devise/shared/links" %>
   </div>
-
-  <%= button_to 'Login with Google', admin_google_oauth2_omniauth_authorize_path, method: :post, :data => {turbo: "false"} %>
-
-
-<% end %>
+</div>
 

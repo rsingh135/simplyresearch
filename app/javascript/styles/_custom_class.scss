@@ -1,0 +1,508 @@
+// Custom styles for SimplyResearch
+
+// Global Background and Typography
+body {
+  background: #FFF8E1; // Light cream background
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2C3E50; // Dark text for readability
+}
+
+// Consistent Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+}
+
+.navbar-brand, .nav-link {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+}
+
+.card-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+}
+
+// Hero Section - Light Theme
+.hero-section {
+  background: transparent;
+  color: #2C3E50;
+  border-radius: 0 0 2rem 2rem;
+  margin-bottom: 2rem;
+  padding: 3rem 0;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  
+  h1 {
+    color: #1A1A1A !important;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .lead {
+    color: #4A5568 !important;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+// Feature Cards - Light Theme
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+  background: white !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(255, 140, 66, 0.2);
+  }
+}
+
+.feature-icon {
+  transition: transform 0.3s ease;
+  
+  .feature-icon-bg {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 140, 66, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 2px solid #FF8C42;
+    transition: all 0.3s ease;
+    
+    svg {
+      color: #FF8C42 !important;
+    }
+  }
+  
+  .feature-card:hover & {
+    .feature-icon-bg {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+      
+      svg {
+        color: white !important;
+      }
+    }
+  }
+}
+
+// Upload Form - Light Theme
+.upload-form {
+  .upload-card {
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    
+    &:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15) !important;
+      transform: translateY(-5px);
+      border-color: rgba(255, 140, 66, 0.2);
+    }
+    
+    // Light theme text colors
+    .card-body {
+      h1, h2, h3, h4, h5, h6 {
+        color: #1A1A1A !important;
+      }
+      
+      p, .text-muted, .lead {
+        color: #4A5568 !important;
+      }
+      
+      .text-dark {
+        color: #1A1A1A !important;
+      }
+      
+      .text-white, .text-white-50 {
+        color: #1A1A1A !important; // Override for light theme
+      }
+    }
+  }
+}
+  
+  .upload-icon {
+    transition: transform 0.3s ease;
+    
+    .upload-icon-bg {
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 140, 66, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border: 3px solid #FF8C42;
+      box-shadow: 0 8px 25px rgba(255, 140, 66, 0.2);
+      
+      svg {
+        color: #FF8C42 !important;
+      }
+    }
+    
+    &:hover .upload-icon-bg {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+      border-color: #FF6B35;
+      box-shadow: 0 12px 35px rgba(255, 140, 66, 0.4);
+      
+      svg {
+        color: white !important;
+      }
+    }
+  }
+
+// File Input Styling - Light Theme
+.file-input {
+  border: 3px dashed rgba(0, 0, 0, 0.15) !important;
+  border-radius: 1rem !important;
+  padding: 2.5rem !important;
+  background-color: #FEF9E7 !important;
+  transition: all 0.3s ease !important;
+  text-align: center;
+  font-size: 1rem;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #4A5568 !important;
+  
+  &:hover {
+    border-color: #FF8C42 !important;
+    background-color: rgba(255, 140, 66, 0.05) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 140, 66, 0.15);
+  }
+  
+  &:focus {
+    border-color: #FF8C42 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25) !important;
+    background-color: rgba(255, 140, 66, 0.05) !important;
+  }
+  
+  &::file-selector-button {
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    &:hover {
+      background: linear-gradient(135deg, #FF7A2E 0%, #FF5A1F 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+    }
+  }
+}
+
+// Button Enhancements
+.btn {
+  border-radius: 2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    border: none;
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(135deg, #FF7A2E 0%, #FF5A1F 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+      color: white;
+    }
+  }
+  
+  &.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+// Card Enhancements - Light Theme
+.card {
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
+  &.shadow-sm {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  &.shadow-lg {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  }
+  
+  &:hover {
+    border-color: rgba(255, 140, 66, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Light Theme Text Colors - All Cards
+.feature-card, .card {
+  .card-body {
+    h1, h2, h3, h4, h5, h6 {
+      color: #1A1A1A !important;
+    }
+    
+    p, .text-muted, .lead {
+      color: #4A5568 !important;
+    }
+    
+    .text-dark {
+      color: #1A1A1A !important;
+    }
+    
+    .text-white, .text-white-50 {
+      color: #1A1A1A !important; // Override white text classes for light theme
+    }
+  }
+}
+
+// Ensure all cards have dark text
+.container .card {
+  .card-body {
+    h1, h2, h3, h4, h5, h6 {
+      color: #1A1A1A !important;
+    }
+    
+    p, .text-muted, .lead {
+      color: #4A5568 !important;
+    }
+    
+    .text-dark {
+      color: #1A1A1A !important;
+    }
+    
+    .text-white, .text-white-50 {
+      color: #1A1A1A !important; // Override white text classes for light theme
+    }
+  }
+}
+
+// Abstract Content - Light Theme
+.abstract-content {
+  border-left: 4px solid #FF8C42;
+  background-color: rgba(255, 140, 66, 0.08) !important;
+  font-style: italic;
+  line-height: 1.6;
+  color: #1A1A1A !important;
+}
+
+// Progress Bar - Light Theme
+.progress {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.08);
+  
+  .progress-bar {
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 10px rgba(255, 140, 66, 0.3);
+  }
+}
+
+// Badge Styling - Light Theme
+.badge {
+  border-radius: 0.5rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 140, 66, 0.3);
+}
+
+// Form Input Styling - Light Theme
+.form-control {
+  border-radius: 0.75rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 0.875rem 1.25rem;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: #1A1A1A;
+  font-size: 1rem;
+  
+  &:focus {
+    border-color: #FF8C42;
+    box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
+    background-color: white;
+    color: #1A1A1A;
+    transform: translateY(-1px);
+  }
+  
+  &::placeholder {
+    color: #A0AEC0;
+    font-style: italic;
+    font-weight: 400;
+  }
+  
+  // Light theme input field styling
+  &.dark-input {
+    background-color: white;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #1A1A1A;
+    
+    &:focus {
+      background-color: white;
+      border-color: #FF8C42;
+      color: #1A1A1A;
+    }
+    
+    &::placeholder {
+      color: #A0AEC0;
+    }
+  }
+}
+
+// Light Navbar
+.dark-navbar {
+  background: white !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 0 0 1rem 1rem;
+  
+  .navbar-brand {
+    color: #1A1A1A !important;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #FF8C42 !important;
+    }
+  }
+  
+  .nav-link {
+    color: #4A5568 !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &:hover {
+      color: #FF8C42 !important;
+      transform: translateY(-1px);
+    }
+    
+    &.text-white {
+      color: #1A1A1A !important; // Override for light theme
+    }
+  }
+  
+  .dropdown-menu {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    
+    .dropdown-item {
+      color: #4A5568;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(255, 140, 66, 0.1);
+        color: #FF8C42;
+      }
+    }
+    
+    .dropdown-divider {
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.15);
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2844, 62, 80, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .hero-section {
+    border-radius: 0 0 1rem 1rem;
+    padding: 2rem 0 !important;
+  }
+  
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .display-5 {
+    font-size: 1.75rem;
+  }
+  
+  .btn-lg {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+// Animation for loading states
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.processing-section {
+  animation: pulse 2s infinite;
+}
+
+// Services Page Styling
+.step-number {
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+  }
+}
+
+.service-content {
+  ul {
+    li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      
+      i {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

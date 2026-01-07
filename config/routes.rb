@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get "home/about"
+  get "home/services"
   root "home#index"
   get "up" => "rails/health#show", :as => :rails_health_check
 end
