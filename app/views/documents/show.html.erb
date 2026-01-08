@@ -3,13 +3,13 @@
   <div class="row mb-4">
     <div class="col-12">
       <div class="d-flex align-items-center mb-3">
-        <%= link_to root_path, class: "btn btn-outline-light me-3" do %>
+        <%= link_to root_path, class: "btn btn-outline-primary me-3" do %>
           <i class="bi bi-arrow-left me-1"></i> Back to Uploads
         <% end %>
-        <h1 class="h2 mb-0 text-white"><%= @document.title.present? ? @document.title : "Research Paper" %></h1>
+        <h1 class="h2 mb-0"><%= @document.title.present? ? @document.title : "Research Paper" %></h1>
       </div>
-      <div class="text-white-50">
-        <small>Uploaded on <%= @document.created_at.strftime("%B %d, %Y at %I:%M %p") %></small>
+      <div>
+        <small class="text-muted">Uploaded on <%= @document.created_at.strftime("%B %d, %Y at %I:%M %p") %></small>
       </div>
     </div>
   </div>
@@ -40,8 +40,8 @@
       <div class="col-lg-8">
         <!-- Summary Section -->
         <div class="card shadow-sm mb-4">
-          <div class="card-header bg-primary text-white">
-            <h3 class="card-title mb-0">
+          <div class="card-header" style="background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%); color: white;">
+            <h3 class="card-title mb-0" style="color: white;">
               <i class="bi bi-file-text me-2"></i>Research Summary
             </h3>
           </div>
@@ -75,8 +75,8 @@
                 <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
               </svg>
             </div>
-            <h5 class="card-title mb-3 text-white">Generate Presentation</h5>
-            <p class="card-text text-white-50 mb-4">Create professional slides from your research summary</p>
+            <h5 class="card-title mb-3">Generate Presentation</h5>
+            <p class="card-text mb-4">Create professional slides from your research summary</p>
             <%= button_to generate_presentation_document_path(@document), method: :post, class: "btn btn-primary btn-lg w-100" do %>
               <i class="bi bi-magic me-2"></i>Generate Slides
             <% end %>
