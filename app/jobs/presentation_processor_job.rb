@@ -37,6 +37,10 @@ class PresentationProcessorJob < ApplicationJob
 
      # --- Direct Gemini API Call using Net::HTTP ---
      api_key = Rails.application.credentials.dig(:google, :gemini_api_key)
+     unless api_key
+       raise "Gemini API key is not configured. Please set it in Rails credentials."
+     end
+     
      model_name = "gemini-2.5-flash-preview-05-20"
      api_version = "v1beta" # Explicitly setting API version for the URI
 
