@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :documents do
     member do
       post :generate_presentation
+      get :status # JSON endpoint for AJAX status polling
     end
   end
 

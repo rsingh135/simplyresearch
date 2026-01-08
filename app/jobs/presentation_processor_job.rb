@@ -10,10 +10,21 @@ class PresentationProcessorJob < ApplicationJob
 
 
  def perform(document_id)
+   Rails.logger.info "=== PresentationProcessorJob started for Document ID: #{document_id} ==="
    document = Document.find_by(id: document_id)
-   return unless document && document.pdf.attached?
 
+   unless document
+     Rails.logger.error "PresentationProcessorJob: Document with ID #{document_id} not found!"
+     return
+   end
 
+   unless document.pdf.attached?
+     Rails.logger.error "PresentationProcessorJob: Document #{document_id} has no PDF attached!"
+     document.update!(status: "processing_failed")
+     return
+   end
+
+   Rails.logger.info "PresentationProcessorJob: Setting status to 'processing' for Document #{document_id}"
    document.update!(status: "processing")
 
 
@@ -40,9 +51,11 @@ class PresentationProcessorJob < ApplicationJob
      unless api_key
        raise "Gemini API key is not configured. Please set it in Rails credentials."
      end
-     
-     model_name = "gemini-2.5-flash-preview-05-20"
-     api_version = "v1beta" # Explicitly setting API version for the URI
+
+     # Use Gemini 2.5 Flash - latest stable model as of 2025
+     # Alternative models if this fails: gemini-2.0-flash, gemini-1.5-flash, gemini-pro
+     model_name = "gemini-2.5-flash"
+     api_version = "v1beta" # v1beta typically has access to latest models
 
 
      # Construct the full URI with the correct API version and model
@@ -114,20 +127,34 @@ class PresentationProcessorJob < ApplicationJob
 
 
      # 5. Store the results in the database
+     Rails.logger.info "PresentationProcessorJob: Updating Document #{document_id} with summary and key points"
      document.update!(
        summary: abstract,
        key_points: key_points,
        status: "generated"
      )
 
-
+     Rails.logger.info "=== PresentationProcessorJob completed successfully for Document #{document_id} ==="
+     Rails.logger.info "Document #{document.id} status: #{document.reload.status}"
      puts "Document #{document.id} processed by AI successfully!"
 
 
    rescue StandardError => e
-     Rails.logger.error "Error processing Document #{document.id}: #{e.message}"
-     Rails.logger.error e.backtrace.join("\n")
-     document.update!(status: "processing_failed")
+     error_message = "#{e.class}: #{e.message}"
+     Rails.logger.error "=== PresentationProcessorJob ERROR for Document #{document_id} ==="
+     Rails.logger.error "Error: #{error_message}"
+     Rails.logger.error "Backtrace: #{e.backtrace.join("\n")}"
+
+     # Store error message in document summary field temporarily for debugging
+     document.update!(
+       status: "processing_failed",
+       summary: "ERROR: #{error_message}\n\nCheck Rails logs for full details."
+     )
+
+     Rails.logger.error "=== PresentationProcessorJob failed, status set to 'processing_failed' ==="
+
+     # Re-raise to ensure GoodJob captures the error
+     raise
    end
  end
 end
