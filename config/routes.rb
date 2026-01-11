@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   get "home/about"
   get "home/services"
+
+  # Monitoring Dashboard (Protected for Admins only)
+  authenticate :admin do
+    mount GoodJob::Engine => "good_job"
+  end
+
   root "home#index"
   get "up" => "rails/health#show", :as => :rails_health_check
 end
