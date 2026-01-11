@@ -1358,3 +1358,49 @@ h6 {
   height: 50px;
   border-radius: 50%;
 }
+
+// How It Works Section Visuals
+.how-it-works-section {
+  .step-badge {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .col-md-4:hover {
+    .step-badge {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4);
+    }
+  }
+}
+
+// Global Footer
+.footer {
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .input-group {
+    .form-control {
+      background-color: white !important;
+      color: #1a1a1a !important;
+      border-radius: 0.5rem 0 0 0.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 0.75rem 1rem;
+      &::placeholder {
+        color: #a0aec0 !important;
+      }
+      &:focus {
+        background-color: white !important;
+        box-shadow: none;
+        border-color: #ff8c42;
+      }
+    }
+    .btn {
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+}

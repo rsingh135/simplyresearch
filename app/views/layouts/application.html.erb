@@ -37,18 +37,22 @@
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <div id="react-root">
     </div>
     <%= render 'home/header' %>
 
-    <% if notice || alert %>
-      <div class="container">
-        <%= render 'layouts/alerts' %>
-      </div>
-    <% end %>
+    <main class="flex-shrink-0">
+      <% if notice || alert %>
+        <div class="container">
+          <%= render 'layouts/alerts' %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </main>
+
+    <%= render 'layouts/footer' %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
       // Re-initialize Bootstrap dropdowns and tooltips on Turbo load
