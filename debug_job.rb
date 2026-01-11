@@ -39,11 +39,11 @@ else
     puts "    Created: #{job.created_at}"
     puts "    Performed: #{job.performed_at || 'Not yet'}"
     puts "    Finished: #{job.finished_at || 'Not yet'}"
-    
+
     if job.error.present?
       puts "    ❌ ERROR: #{job.error[0..200]}"
     end
-    
+
     # Check executions
     executions = GoodJob::Execution.where(active_job_id: job.active_job_id)
     if executions.any?

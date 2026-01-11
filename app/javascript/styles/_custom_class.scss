@@ -2,28 +2,34 @@
 
 // Global Background and Typography
 body {
-  background: #FFF8E1 !important; // Light cream background
+  background: #fff8e1 !important; // Light cream background
   min-height: 100vh;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2C3E50 !important; // Dark text for readability
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: #2c3e50 !important; // Dark text for readability
 }
 
 // Ensure html element also has cream background
 html {
-  background: #FFF8E1 !important;
+  background: #fff8e1 !important;
 }
 
 // Override Bootstrap default text colors for light theme
 .text-muted {
-  color: #4A5568 !important;
+  color: #4a5568 !important;
 }
 
 .text-dark {
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
 }
 
 .text-primary {
-  color: #FF8C42 !important;
+  color: #ff8c42 !important;
 }
 
 .text-success {
@@ -39,7 +45,13 @@ html {
 }
 
 // Ensure all text elements have proper color
-p, span, div, a, li, td, th {
+p,
+span,
+div,
+a,
+li,
+td,
+th {
   color: inherit;
 }
 
@@ -52,20 +64,20 @@ p, span, div, a, li, td, th {
 .features-section h2,
 .features-section h3,
 .features-section h4 {
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
 }
 
 // Ensure lead text in sections is dark
 .container .lead,
 .features-section .lead {
-  color: #4A5568 !important;
+  color: #4a5568 !important;
 }
 
 // Section Typography
 .section-heading {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -74,7 +86,7 @@ p, span, div, a, li, td, th {
 .section-subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 400;
-  color: #4A5568 !important;
+  color: #4a5568 !important;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -82,14 +94,14 @@ p, span, div, a, li, td, th {
 .section-title {
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
   line-height: 1.3;
 }
 
 .section-text {
   font-size: 1.125rem;
   font-weight: 400;
-  color: #4A5568 !important;
+  color: #4a5568 !important;
   line-height: 1.7;
 }
 
@@ -97,14 +109,14 @@ p, span, div, a, li, td, th {
 .step-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
   margin-bottom: 1rem;
 }
 
 .step-text {
   font-size: 1rem;
   font-weight: 400;
-  color: #4A5568 !important;
+  color: #4a5568 !important;
   line-height: 1.7;
 }
 
@@ -112,14 +124,14 @@ p, span, div, a, li, td, th {
 .faq-question {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
   margin-bottom: 0.75rem;
 }
 
 .faq-answer {
   font-size: 1rem;
   font-weight: 400;
-  color: #4A5568 !important;
+  color: #4a5568 !important;
   line-height: 1.7;
 }
 
@@ -130,15 +142,15 @@ p, span, div, a, li, td, th {
     padding: 0;
     margin: 0;
     text-align: left;
-    
+
     li {
       font-size: 0.95rem;
       font-weight: 400;
-      color: #4A5568 !important;
+      color: #4a5568 !important;
       line-height: 1.7;
       margin-bottom: 0.75rem;
       padding-left: 0;
-      
+
       i {
         color: #28a745;
         font-size: 1rem;
@@ -154,101 +166,158 @@ p, span, div, a, li, td, th {
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  
+
   .step-badge {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
     color: white;
     border-radius: 50%;
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
   }
 }
 
 // Ensure containers don't override background
-.container, .container-fluid {
+.container,
+.container-fluid {
   background: transparent !important;
 }
 
 // Override any Bootstrap bg classes that might be applied
-.bg-light, .bg-white {
+.bg-light,
+.bg-white {
   background-color: white !important;
 }
 
-.bg-dark, .bg-secondary {
+.bg-dark,
+.bg-secondary {
   background-color: transparent !important;
 }
 
 // Consistent Typography
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 600;
-  color: #1A1A1A !important; // Ensure all headings are dark
+  color: #1a1a1a !important; // Ensure all headings are dark
 }
 
-.navbar-brand, .nav-link {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+.navbar-brand,
+.nav-link {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 500;
 }
 
 .card-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 600;
 }
 
 // Hero Section - Light Theme (Base44 inspired)
 .hero-section {
   background: transparent;
-  color: #2C3E50;
+  color: #2c3e50;
   border-radius: 0 0 2rem 2rem;
   margin-bottom: 4rem;
   padding: 5rem 0 1rem;
   min-height: 400px;
   display: flex;
   align-items: center;
-  
+
   .hero-title {
-    color: #1A1A1A !important;
+    color: #1a1a1a !important;
     font-weight: 700;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1.1;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
   }
-  
+
   .hero-subtitle {
-    color: #4A5568 !important;
+    color: #4a5568 !important;
     font-size: clamp(1.125rem, 2vw, 1.5rem);
     font-weight: 400;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     line-height: 1.6;
     max-width: 700px;
     margin: 0 auto;
   }
-  
+
   // Legacy support
   h1 {
-    color: #1A1A1A !important;
+    color: #1a1a1a !important;
     font-weight: 700;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1.1;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
   }
-  
+
   .lead {
-    color: #4A5568 !important;
+    color: #4a5568 !important;
     font-size: clamp(1.125rem, 2vw, 1.5rem);
     font-weight: 400;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     line-height: 1.6;
     max-width: 700px;
     margin: 0 auto;
@@ -258,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 // Features Section
 .features-section {
   margin-top: 4rem;
-  
+
   .container {
     max-width: 1200px;
   }
@@ -266,39 +335,41 @@ h1, h2, h3, h4, h5, h6 {
 
 // Feature Cards - Light Theme
 .feature-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border-radius: 1rem;
   background: white !important;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   height: 100%;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
     border-color: rgba(255, 140, 66, 0.2);
   }
-  
+
   .card-body {
     padding: 2rem;
   }
-  
+
   .card-title {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
   }
-  
+
   .card-text {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #4A5568 !important;
+    color: #4a5568 !important;
   }
 }
 
 .feature-icon {
   transition: transform 0.3s ease;
-  
+
   .feature-icon-bg {
     width: 64px;
     height: 64px;
@@ -308,19 +379,19 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    border: 2px solid #FF8C42;
+    border: 2px solid #ff8c42;
     transition: all 0.3s ease;
-    
+
     svg {
-      color: #FF8C42 !important;
+      color: #ff8c42 !important;
     }
   }
-  
+
   .feature-card:hover & {
     .feature-icon-bg {
       transform: scale(1.1);
-      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
-      
+      background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+
       svg {
         color: white !important;
       }
@@ -335,52 +406,60 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
     &:hover {
-      box-shadow: 0 12px 32px rgba(0,0,0,0.15) !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
       transform: translateY(-5px);
       border-color: rgba(255, 140, 66, 0.2);
     }
-    
+
     .card-body {
       padding: 3rem 2.5rem;
     }
-    
+
     .upload-title {
       font-size: 1.75rem;
       font-weight: 600;
-      color: #1A1A1A !important;
+      color: #1a1a1a !important;
       margin-bottom: 0.5rem;
     }
-    
+
     .upload-subtitle {
       font-size: 1rem;
-      color: #4A5568 !important;
+      color: #4a5568 !important;
       margin-bottom: 0;
     }
-    
+
     // Light theme text colors
-    h1, h2, h3, h4, h5, h6 {
-      color: #1A1A1A !important;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #1a1a1a !important;
     }
-    
-    p, .text-muted, .lead {
-      color: #4A5568 !important;
+
+    p,
+    .text-muted,
+    .lead {
+      color: #4a5568 !important;
     }
-    
+
     .text-dark {
-      color: #1A1A1A !important;
+      color: #1a1a1a !important;
     }
-    
-    .text-white, .text-white-50 {
-      color: #1A1A1A !important; // Override for light theme
+
+    .text-white,
+    .text-white-50 {
+      color: #1a1a1a !important; // Override for light theme
     }
   }
-  
+
   .upload-icon {
     transition: transform 0.3s ease;
-    
+
     .upload-icon-bg {
       width: 90px;
       height: 90px;
@@ -390,20 +469,20 @@ h1, h2, h3, h4, h5, h6 {
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      border: 3px solid #FF8C42;
+      border: 3px solid #ff8c42;
       box-shadow: 0 8px 25px rgba(255, 140, 66, 0.2);
-      
+
       svg {
-        color: #FF8C42 !important;
+        color: #ff8c42 !important;
       }
     }
-    
+
     &:hover .upload-icon-bg {
       transform: scale(1.05);
-      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
-      border-color: #FF6B35;
+      background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+      border-color: #ff6b35;
       box-shadow: 0 12px 35px rgba(255, 140, 66, 0.4);
-      
+
       svg {
         color: white !important;
       }
@@ -416,7 +495,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 3px dashed rgba(0, 0, 0, 0.15) !important;
   border-radius: 1rem !important;
   padding: 2.5rem !important;
-  background-color: #FEF9E7 !important;
+  background-color: #fef9e7 !important;
   transition: all 0.3s ease !important;
   text-align: center;
   font-size: 1rem;
@@ -425,23 +504,23 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   position: relative;
-  color: #4A5568 !important;
-  
+  color: #4a5568 !important;
+
   &:hover {
-    border-color: #FF8C42 !important;
+    border-color: #ff8c42 !important;
     background-color: rgba(255, 140, 66, 0.05) !important;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255, 140, 66, 0.15);
   }
-  
+
   &:focus {
-    border-color: #FF8C42 !important;
+    border-color: #ff8c42 !important;
     box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25) !important;
     background-color: rgba(255, 140, 66, 0.05) !important;
   }
-  
+
   &::file-selector-button {
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
     color: white;
     border: none;
     padding: 0.875rem 2rem;
@@ -451,10 +530,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+
     &:hover {
-      background: linear-gradient(135deg, #FF7A2E 0%, #FF5A1F 100%);
+      background: linear-gradient(135deg, #ff7a2e 0%, #ff5a1f 100%);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
     }
@@ -466,35 +551,41 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
   &.btn-primary {
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
     border: none;
     color: white;
-    
+
     &:hover {
-      background: linear-gradient(135deg, #FF7A2E 0%, #FF5A1F 100%);
+      background: linear-gradient(135deg, #ff7a2e 0%, #ff5a1f 100%);
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
       color: white;
     }
   }
-  
+
   &.btn-outline-primary {
-    border: 2px solid #FF8C42;
-    color: #FF8C42;
+    border: 2px solid #ff8c42;
+    color: #ff8c42;
     background: transparent;
-    
+
     &:hover {
-      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
-      border-color: #FF8C42;
+      background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+      border-color: #ff8c42;
       color: white;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
     }
   }
-  
+
   &.btn-lg {
     padding: 0.75rem 2rem;
     font-size: 1.1rem;
@@ -507,27 +598,27 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(0, 0, 0, 0.05);
   background: white !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  
+
   &.shadow-sm {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
   }
-  
+
   &.shadow-lg {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
   }
-  
+
   &:hover {
     border-color: rgba(255, 140, 66, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
-  
+
   // Card header styling
   .card-header {
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%) !important;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%) !important;
     color: white !important;
     border-bottom: 1px solid rgba(255, 140, 66, 0.2);
-    
+
     .card-title {
       color: white !important;
     }
@@ -535,22 +626,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Light Theme Text Colors - All Cards
-.feature-card, .card {
+.feature-card,
+.card {
   .card-body {
-    h1, h2, h3, h4, h5, h6 {
-      color: #1A1A1A !important;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #1a1a1a !important;
     }
-    
-    p, .text-muted, .lead {
-      color: #4A5568 !important;
+
+    p,
+    .text-muted,
+    .lead {
+      color: #4a5568 !important;
     }
-    
+
     .text-dark {
-      color: #1A1A1A !important;
+      color: #1a1a1a !important;
     }
-    
-    .text-white, .text-white-50 {
-      color: #1A1A1A !important; // Override white text classes for light theme
+
+    .text-white,
+    .text-white-50 {
+      color: #1a1a1a !important; // Override white text classes for light theme
     }
   }
 }
@@ -558,31 +658,39 @@ h1, h2, h3, h4, h5, h6 {
 // Ensure all cards have dark text
 .container .card {
   .card-body {
-    h1, h2, h3, h4, h5, h6 {
-      color: #1A1A1A !important;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #1a1a1a !important;
     }
-    
-    p, .text-muted, .lead {
-      color: #4A5568 !important;
+
+    p,
+    .text-muted,
+    .lead {
+      color: #4a5568 !important;
     }
-    
+
     .text-dark {
-      color: #1A1A1A !important;
+      color: #1a1a1a !important;
     }
-    
-    .text-white, .text-white-50 {
-      color: #1A1A1A !important; // Override white text classes for light theme
+
+    .text-white,
+    .text-white-50 {
+      color: #1a1a1a !important; // Override white text classes for light theme
     }
   }
 }
 
 // Abstract Content - Light Theme
 .abstract-content {
-  border-left: 4px solid #FF8C42;
+  border-left: 4px solid #ff8c42;
   background-color: rgba(255, 140, 66, 0.08) !important;
   font-style: italic;
   line-height: 1.6;
-  color: #1A1A1A !important;
+  color: #1a1a1a !important;
 }
 
 // Progress Bar - Light Theme
@@ -590,9 +698,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 0.5rem;
   border-radius: 0.25rem;
   background-color: rgba(0, 0, 0, 0.08);
-  
+
   .progress-bar {
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
     border-radius: 0.25rem;
     box-shadow: 0 0 10px rgba(255, 140, 66, 0.3);
   }
@@ -602,26 +710,26 @@ h1, h2, h3, h4, h5, h6 {
 .badge {
   border-radius: 0.5rem;
   font-weight: 500;
-  background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+  background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
   color: white;
   box-shadow: 0 2px 8px rgba(255, 140, 66, 0.3);
-  
+
   // Override Bootstrap badge colors
   &.bg-primary {
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%) !important;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%) !important;
     color: white !important;
   }
-  
+
   &.bg-success {
     background: #28a745 !important;
     color: white !important;
   }
-  
+
   &.bg-danger {
     background: #dc3545 !important;
     color: white !important;
   }
-  
+
   &.bg-info {
     background: #17a2b8 !important;
     color: white !important;
@@ -630,7 +738,7 @@ h1, h2, h3, h4, h5, h6 {
 
 // Override Bootstrap background utility classes
 .bg-primary {
-  background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%) !important;
+  background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%) !important;
   color: white !important;
 }
 
@@ -656,37 +764,37 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.875rem 1.25rem;
   transition: all 0.3s ease;
   background-color: white;
-  color: #1A1A1A;
+  color: #1a1a1a;
   font-size: 1rem;
-  
+
   &:focus {
-    border-color: #FF8C42;
+    border-color: #ff8c42;
     box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
     background-color: white;
-    color: #1A1A1A;
+    color: #1a1a1a;
     transform: translateY(-1px);
   }
-  
+
   &::placeholder {
-    color: #A0AEC0;
+    color: #a0aec0;
     font-style: italic;
     font-weight: 400;
   }
-  
+
   // Light theme input field styling
   &.dark-input {
     background-color: white;
     border-color: rgba(0, 0, 0, 0.1);
-    color: #1A1A1A;
-    
+    color: #1a1a1a;
+
     &:focus {
       background-color: white;
-      border-color: #FF8C42;
-      color: #1A1A1A;
+      border-color: #ff8c42;
+      color: #1a1a1a;
     }
-    
+
     &::placeholder {
-      color: #A0AEC0;
+      color: #a0aec0;
     }
   }
 }
@@ -696,60 +804,60 @@ h1, h2, h3, h4, h5, h6 {
   background: white !important;
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 0 0 1rem 1rem;
-  
+
   .navbar-brand {
-    color: #1A1A1A !important;
+    color: #1a1a1a !important;
     font-weight: 600;
     transition: color 0.3s ease;
-    
+
     &:hover {
-      color: #FF8C42 !important;
+      color: #ff8c42 !important;
     }
   }
-  
+
   .nav-link {
-    color: #4A5568 !important;
+    color: #4a5568 !important;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
-    
+
     &:hover {
-      color: #FF8C42 !important;
+      color: #ff8c42 !important;
       transform: translateY(-1px);
     }
-    
+
     &.text-white {
-      color: #1A1A1A !important; // Override for light theme
+      color: #1a1a1a !important; // Override for light theme
     }
   }
-  
+
   .dropdown-menu {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(20px);
     border-radius: 0.75rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
     .dropdown-item {
-      color: #4A5568;
+      color: #4a5568;
       transition: all 0.3s ease;
-      
+
       &:hover {
         background: rgba(255, 140, 66, 0.1);
-        color: #FF8C42;
+        color: #ff8c42;
       }
     }
-    
+
     .dropdown-divider {
       border-color: rgba(0, 0, 0, 0.08);
     }
   }
-  
+
   .navbar-toggler {
     border-color: rgba(0, 0, 0, 0.15);
-    
+
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2844, 62, 80, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
@@ -762,15 +870,15 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 0 0 1rem 1rem;
     padding: 2rem 0 !important;
   }
-  
+
   .display-4 {
     font-size: 2rem;
   }
-  
+
   .display-5 {
     font-size: 1.75rem;
   }
-  
+
   .btn-lg {
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
@@ -779,9 +887,15 @@ h1, h2, h3, h4, h5, h6 {
 
 // Animation for loading states
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .processing-section {
@@ -796,12 +910,18 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
     color: white;
     border-radius: 50%;
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
   }
 }
@@ -811,7 +931,7 @@ h1, h2, h3, h4, h5, h6 {
     li {
       font-size: 0.95rem;
       line-height: 1.6;
-      
+
       i {
         font-size: 0.8rem;
       }
@@ -824,15 +944,15 @@ h1, h2, h3, h4, h5, h6 {
   li {
     padding: 0.75rem;
     background-color: rgba(255, 140, 66, 0.05);
-    border-left: 3px solid #FF8C42;
+    border-left: 3px solid #ff8c42;
     border-radius: 4px;
     transition: all 0.2s ease;
-    
+
     &:hover {
       background-color: rgba(255, 140, 66, 0.1);
       transform: translateX(4px);
     }
-    
+
     .badge {
       width: 32px;
       height: 32px;
@@ -848,12 +968,12 @@ h1, h2, h3, h4, h5, h6 {
 .action-card {
   position: sticky;
   top: 2rem;
-  
+
   svg {
     opacity: 0.8;
     transition: all 0.3s ease;
   }
-  
+
   &:hover svg {
     opacity: 1;
     transform: scale(1.05);
@@ -863,12 +983,12 @@ h1, h2, h3, h4, h5, h6 {
 // Global Spacing Improvements
 .container {
   max-width: 1200px;
-  
+
   &.py-4 {
     padding-top: 2.5rem !important;
     padding-bottom: 2.5rem !important;
   }
-  
+
   &.py-5 {
     padding-top: 3.5rem !important;
     padding-bottom: 3.5rem !important;
@@ -880,7 +1000,7 @@ h1, h2, h3, h4, h5, h6 {
   &.p-4 {
     padding: 2rem !important;
   }
-  
+
   &.p-5 {
     padding: 3rem !important;
   }
@@ -891,17 +1011,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   letter-spacing: 0.01em;
   transition: all 0.2s ease;
-  
+
   &.btn-lg {
     padding: 0.75rem 1.5rem;
     font-size: 1.125rem;
   }
-  
+
   &:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
@@ -909,7 +1029,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary {
   box-shadow: 0 2px 8px rgba(255, 140, 66, 0.3);
-  
+
   &:hover {
     box-shadow: 0 4px 16px rgba(255, 140, 66, 0.4);
   }
@@ -924,7 +1044,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline-secondary {
   border-color: #6c757d;
   color: #6c757d;
-  
+
   &:hover {
     background-color: #6c757d;
     border-color: #6c757d;
@@ -938,15 +1058,15 @@ h1, h2, h3, h4, h5, h6 {
 .card.border-danger,
 .card.border-info {
   border-width: 2px !important;
-  
+
   .card-body {
     padding: 3rem 2.5rem !important;
   }
-  
+
   svg {
     transition: all 0.3s ease;
   }
-  
+
   &:hover svg {
     transform: scale(1.1);
   }
@@ -956,42 +1076,42 @@ h1, h2, h3, h4, h5, h6 {
 .container .card .card-body {
   form {
     .form-label {
-      color: #1A1A1A !important;
+      color: #1a1a1a !important;
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
-    
+
     .form-control {
       border: 1px solid rgba(0, 0, 0, 0.15);
       border-radius: 0.5rem;
       padding: 0.75rem 1rem;
       font-size: 1rem;
-      color: #1A1A1A !important;
+      color: #1a1a1a !important;
       background-color: white !important;
       transition: all 0.2s ease;
-      
+
       &:focus {
-        border-color: #FF8C42;
+        border-color: #ff8c42;
         box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
         outline: none;
       }
-      
+
       &::placeholder {
-        color: #9CA3AF !important;
+        color: #9ca3af !important;
       }
     }
-    
+
     .form-control-lg {
       padding: 1rem 1.25rem;
       font-size: 1.125rem;
     }
-    
+
     .form-check-label {
-      color: #4A5568 !important;
+      color: #4a5568 !important;
       font-weight: 400;
       margin-left: 0.5rem;
     }
-    
+
     .form-check-input {
       width: 1.25rem !important;
       height: 1.25rem !important;
@@ -1004,49 +1124,49 @@ h1, h2, h3, h4, h5, h6 {
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
-      
+
       &:checked {
-        background-color: #FF8C42 !important;
-        border-color: #FF8C42 !important;
+        background-color: #ff8c42 !important;
+        border-color: #ff8c42 !important;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
         background-repeat: no-repeat !important;
         background-position: center !important;
         background-size: 100% 100% !important;
       }
-      
+
       &:not(:checked) {
         background-color: white !important;
         background-image: none !important;
       }
-      
+
       &:focus {
-        border-color: #FF8C42 !important;
+        border-color: #ff8c42 !important;
         box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25) !important;
         outline: none;
       }
-      
+
       &:hover:not(:checked) {
-        border-color: #FF8C42 !important;
+        border-color: #ff8c42 !important;
         background-color: white !important;
       }
     }
-    
+
     .form-check-label {
       cursor: pointer;
       user-select: none;
     }
   }
-  
+
   .alert {
     border-radius: 0.5rem;
-    
+
     &.alert-info {
       background-color: rgba(23, 162, 184, 0.1);
       border-color: rgba(23, 162, 184, 0.3);
       color: #0c5460 !important;
     }
   }
-  
+
   // Google OAuth Button Styling
   .btn-google {
     background-color: white !important;
@@ -1057,54 +1177,55 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    
+
     svg {
       color: #4285f4;
     }
-    
+
     &:hover {
       background-color: #f8f9fa !important;
       border-color: #dadce0 !important;
       color: #202124 !important;
       box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3);
-      
+
       svg {
         color: #1a73e8;
       }
     }
-    
-    &:active, &:focus {
+
+    &:active,
+    &:focus {
       background-color: #f1f3f4 !important;
       box-shadow: inset 0 2px 4px rgba(60, 64, 67, 0.2);
       border-color: #dadce0 !important;
       color: #202124 !important;
     }
   }
-  
+
   // Ensure button_to forms don't interfere with button styling
   form.button_to {
     display: inline-block;
     margin: 0;
-    
+
     .btn {
       margin: 0;
     }
   }
-  
+
   // Auth Links Styling
   .auth-link {
-    color: #FF8C42 !important;
+    color: #ff8c42 !important;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
-    
+
     &:hover {
-      color: #FF6B35 !important;
+      color: #ff6b35 !important;
       text-decoration: underline;
     }
-    
+
     &:visited {
-      color: #FF8C42 !important;
+      color: #ff8c42 !important;
     }
   }
 }
@@ -1113,15 +1234,15 @@ h1, h2, h3, h4, h5, h6 {
 .card.border-danger {
   border-width: 2px !important;
   border-color: #dc3545 !important;
-  
+
   .card-body {
     background-color: white !important;
   }
-  
+
   h3 {
     color: #dc3545 !important;
   }
-  
+
   .btn-danger {
     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
     border: none;
@@ -1130,7 +1251,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
-    
+
     &:hover {
       background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
       transform: translateY(-1px);
@@ -1144,17 +1265,20 @@ h1, h2, h3, h4, h5, h6 {
   background: white !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-  
+
   .card-body {
-    color: #1A1A1A !important;
+    color: #1a1a1a !important;
   }
-  
-  h2, h3 {
-    color: #1A1A1A !important;
+
+  h2,
+  h3 {
+    color: #1a1a1a !important;
   }
-  
-  p, span, small {
-    color: #4A5568 !important;
+
+  p,
+  span,
+  small {
+    color: #4a5568 !important;
   }
 }
 

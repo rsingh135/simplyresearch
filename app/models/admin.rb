@@ -14,7 +14,7 @@ class Admin < ApplicationRecord
     unless self.access_token.present? && self.refresh_token.present?
       raise "Missing Google OAuth tokens. Please sign in with Google again."
     end
-    
+
     auth = Google::Auth::UserRefreshCredentials.new(
       access_token: self.access_token,
       refresh_token: self.refresh_token,
@@ -23,7 +23,7 @@ class Admin < ApplicationRecord
       client_secret: Rails.application.credentials.dig(:google, :client_secret),
       scope: [ "email", "profile", "https://www.googleapis.com/auth/drive.file" ]
     )
-    
+
     # Try to refresh if expired
     begin
       if auth.expired? || auth.expires_at.nil?
@@ -34,7 +34,7 @@ class Admin < ApplicationRecord
       Rails.logger.error "Failed to refresh Google OAuth token: #{e.message}"
       raise "Google OAuth token refresh failed. Please sign in with Google again to re-authenticate."
     end
-    
+
     auth
   end
 end

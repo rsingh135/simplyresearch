@@ -47,11 +47,11 @@ else
   puts "  Created: #{execution.created_at}"
   puts "  Finished: #{execution.finished_at || 'Not finished'}"
   puts "  Duration: #{execution.duration}"
-  
+
   if execution.error.present?
     puts "\n  ❌ ERROR FOUND:"
     puts "  #{execution.error[0..500]}"
-    
+
     if execution.error_backtrace.present?
       puts "\n  📍 Backtrace (first 10 lines):"
       execution.error_backtrace.first(10).each_with_index do |line, idx|
