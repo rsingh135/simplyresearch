@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
     end
     unless @document.admin == current_admin
       redirect_to root_path, alert: "You don't have permission to view this document."
-      nil
+      return
     end
   end
 

@@ -72,7 +72,7 @@ gem "google-apis-drive_v3", "~> 0.69.0"
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "brakeman", "~> 7.1.2", require: false
 
   gem "capybara"
 

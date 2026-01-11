@@ -13,7 +13,7 @@ function generateSummary(pdfText, apiKey) {
 
   const prompt = `
   You are an expert academic summarizer.
-  Summarize the following research paper text into a concise abstpt and extract 5-7 key bullet points.
+  Summarize the following research paper text into a concise abstract and extract 5-7 key bullet points.
   Format the output as:
   Abstract: [Concise abstract here]
   Key Points:

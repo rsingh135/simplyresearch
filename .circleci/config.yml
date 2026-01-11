@@ -103,20 +103,35 @@ jobs:
       - *ruby_docker
       - image: postgres:17-alpine # Specifying that we are using PostgreSQL 17 for the database in the Rails app for testing
         environment:
-          POSTGRES_USER: simplyresearch_user # Credentials for PostgreSQL user
-          POSTGRES_DB: test_db
+          POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: circleci
+          POSTGRES_DB: simplyresearch_test
           POSTGRES_HOST_AUTH_METHOD: trust
+
+    environment:
+      RAILS_ENV: test
+      DATABASE_URL: postgresql://circleci:circleci@localhost:5432/simplyresearch_test
 
     steps:
       - attach_workspace:
           at: *root
+      - run:
+          name: Install PostgreSQL client
+          command: sudo apt-get update && sudo apt-get install -y postgresql-client
       - browser-tools/install_firefox
       - run:
-          name: Wait for PostgreSQL
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:migrate
-      - run: bundle exec rake db:migrate RAILS_ENV=test
+          name: Wait for PostgreSQL to be ready
+          command: |
+            for i in `seq 1 30`; do
+              pg_isready -h localhost -U circleci && break
+              echo "Waiting for PostgreSQL to start..."
+              sleep 1
+            done
+      - run:
+          name: Setup test database
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
       - run:
           name: Run Rspec
           command: bundle exec rspec --format progress
