@@ -3,16 +3,16 @@
   <div class="row mb-4">
     <div class="col-12">
       <div class="mb-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex flex-sm-row flex-column justify-content-between align-items-sm-center align-items-stretch mb-3 gap-3">
           <%= link_to documents_path, class: "btn btn-outline-secondary" do %>
             <i class="bi bi-arrow-left me-1"></i> Back to Library
           <% end %>
           
           <div class="dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-outline-secondary dropdown-toggle w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Actions
             </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 w-100">
               <li>
                 <button class="dropdown-item" onclick="toggleRename()">
                   <i class="bi bi-pencil me-2"></i> Rename
@@ -33,10 +33,12 @@
         </div>
 
         <div id="rename-form" class="d-none mb-3">
-          <%= form_with(model: @document, class: "d-flex gap-2 align-items-center") do |f| %>
+          <%= form_with(model: @document, class: "d-flex flex-sm-row flex-column gap-2 align-items-sm-center align-items-stretch") do |f| %>
             <%= f.text_field :title, class: "form-control form-control-lg", value: @document.title, style: "max-width: 400px;" %>
-            <%= f.submit "Save", class: "btn btn-primary" %>
-            <button type="button" class="btn btn-outline-secondary" onclick="toggleRename()">Cancel</button>
+            <div class="d-flex gap-2">
+              <%= f.submit "Save", class: "btn btn-primary flex-grow-1" %>
+              <button type="button" class="btn btn-outline-secondary flex-grow-1" onclick="toggleRename()">Cancel</button>
+            </div>
           <% end %>
         </div>
 
@@ -51,7 +53,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="card shadow-lg border-0">
-            <div class="card-body text-center p-5">
+            <div class="card-body text-center p-4 p-sm-5">
               <div class="mb-4">
                 <div class="success-icon-circle mx-auto mb-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
@@ -61,7 +63,7 @@
               </div>
               <h3 class="section-title mb-3">Presentation Ready!</h3>
               <p class="section-text text-muted mb-4">Your presentation has been successfully generated and is ready to view.</p>
-              <%= link_to @document.presentation_url, target: "_blank", class: "btn btn-primary btn-lg" do %>
+              <%= link_to @document.presentation_url, target: "_blank", class: "btn btn-primary btn-lg w-100" do %>
                 <i class="bi bi-file-earmark-slides me-2"></i>Open Presentation
               <% end %>
             </div>
@@ -70,26 +72,26 @@
       </div>
 
     <% elsif @document.status == "generated" %>
-      <div class="row">
+      <div class="row g-4">
         <div class="col-lg-8">
-          <div class="card shadow-sm mb-4">
-            <div class="card-header">
-              <h3 class="card-title mb-0">
+          <div class="card shadow-sm mb-4 border-0">
+            <div class="card-header bg-white border-bottom py-3">
+              <h3 class="card-title mb-0 fs-5">
                 <i class="bi bi-file-text me-2"></i>Research Summary
               </h3>
             </div>
-            <div class="card-body">
-              <h5 class="section-title mb-4">Abstract</h5>
-              <div class="abstract-content p-4 rounded mb-5">
+            <div class="card-body p-4">
+              <h5 class="section-title mb-3 fs-6">Abstract</h5>
+              <div class="abstract-content p-3 p-sm-4 rounded mb-4" style="background: rgba(255, 140, 66, 0.05); border-left: 4px solid #ff8c42;">
                 <p class="section-text mb-0"><%= @document.summary %></p>
               </div>
               
-              <h5 class="section-title mb-4">Key Points</h5>
-              <ul class="list-unstyled key-points-list">
+              <h5 class="section-title mb-3 fs-6">Key Points</h5>
+              <ul class="list-unstyled key-points-list mb-0">
                 <% @document.key_points.each_with_index do |point, index| %>
                   <li class="mb-3">
                     <div class="d-flex align-items-start">
-                      <span class="badge bg-primary me-3 mt-1 flex-shrink-0"><%= index + 1 %></span>
+                      <span class="badge bg-primary me-3 mt-1 flex-shrink-0" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><%= index + 1 %></span>
                       <span class="section-text"><%= point %></span>
                     </div>
                   </li>
@@ -100,14 +102,16 @@
         </div>
         
         <div class="col-lg-4">
-          <div class="card shadow-sm action-card">
+          <div class="card shadow-sm action-card border-0">
             <div class="card-body text-center p-4">
               <div class="mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" class="bi bi-easel text-primary" viewBox="0 0 16 16">
-                  <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
-                </svg>
+                <div class="upload-icon-bg mx-auto" style="width: 80px; height: 80px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-easel text-primary" viewBox="0 0 16 16">
+                    <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 1 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
+                  </svg>
+                </div>
               </div>
-              <h5 class="section-title mb-3">Generate Presentation</h5>
+              <h5 class="section-title mb-3 fs-5">Generate Presentation</h5>
               <p class="section-text mb-4">Create professional slides from your research summary</p>
               <%= button_to generate_presentation_document_path(@document), method: :post, class: "btn btn-primary btn-lg w-100" do %>
                 <i class="bi bi-magic me-2"></i>Generate Slides
@@ -121,7 +125,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="card shadow-lg border-0 border-start border-4 border-danger">
-            <div class="card-body text-center p-5">
+            <div class="card-body text-center p-4 p-sm-5">
               <div class="mb-4">
                 <div class="error-icon-circle mx-auto mb-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
@@ -132,11 +136,11 @@
               <h3 class="section-title mb-3 text-danger"><%= @document.status == "presentation_failed" ? "Generation Failed" : "Processing Failed" %></h3>
               <p class="section-text text-muted mb-4"><%= @document.summary.presence || "An unexpected error occurred." %></p>
               <% if @document.status == "presentation_failed" %>
-                <%= button_to generate_presentation_document_path(@document), method: :post, class: "btn btn-primary btn-lg" do %>
+                <%= button_to generate_presentation_document_path(@document), method: :post, class: "btn btn-primary btn-lg w-100" do %>
                   <i class="bi bi-arrow-clockwise me-2"></i>Retry Generation
                 <% end %>
               <% else %>
-                <%= link_to "Upload a New Document", root_path, class: "btn btn-primary btn-lg" %>
+                <%= link_to "Upload a New Document", root_path, class: "btn btn-primary btn-lg w-100" %>
               <% end %>
             </div>
           </div>
@@ -148,7 +152,7 @@
         <div class="row justify-content-center mb-5">
           <div class="col-lg-8">
             <div class="card shadow-lg border-0">
-              <div class="card-body text-center p-5">
+              <div class="card-body text-center p-4 p-sm-5">
                 <div class="mb-4">
                   <div class="spinner-border text-primary" role="status" style="width: 3.5rem; height: 3.5rem;">
                     <span class="visually-hidden">Processing...</span>

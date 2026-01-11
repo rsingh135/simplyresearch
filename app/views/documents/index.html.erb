@@ -1,11 +1,11 @@
 <div class="container py-5">
-  <div class="row mb-5 align-items-center">
-    <div class="col-md-6">
+  <div class="row mb-5 align-items-center g-4">
+    <div class="col-md-6 text-center text-md-start">
       <h1 class="section-title mb-0">My Research Library</h1>
-      <p class="text-muted mt-2">Manage and view all your processed research papers</p>
+      <p class="text-muted mt-2 mb-0">Manage and view all your processed research papers</p>
     </div>
-    <div class="col-md-6 text-md-end">
-      <%= link_to root_path, class: "btn btn-primary btn-lg" do %>
+    <div class="col-md-6 text-center text-md-end">
+      <%= link_to root_path, class: "btn btn-primary btn-lg w-100 w-md-auto" do %>
         <i class="bi bi-plus-lg me-2"></i>Upload New Paper
       <% end %>
     </div>
@@ -60,8 +60,8 @@
               </div>
 
               <div id="title-container-<%= document.id %>">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4 class="card-title mb-0 text-truncate" style="max-width: 70%;" title="<%= document.title.present? ? document.title : 'Untitled Research Paper' %>">
+                <div class="d-flex flex-column mb-3">
+                  <h4 class="card-title mb-1 text-truncate" title="<%= document.title.present? ? document.title : 'Untitled Research Paper' %>">
                     <%= document.title.present? ? document.title : "Untitled Research Paper" %>
                   </h4>
                   <small class="text-muted"><%= time_ago_in_words(document.created_at) %> ago</small>
@@ -69,10 +69,12 @@
               </div>
 
               <div id="rename-form-<%= document.id %>" class="d-none mb-3">
-                <%= form_with(model: document, class: "d-flex gap-2") do |f| %>
+                <%= form_with(model: document, class: "d-flex flex-column gap-2") do |f| %>
                   <%= f.text_field :title, class: "form-control form-control-sm", value: document.title %>
-                  <%= f.submit "Save", class: "btn btn-primary btn-sm" %>
-                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="toggleRename('<%= document.id %>')">Cancel</button>
+                  <div class="d-flex gap-2">
+                    <%= f.submit "Save", class: "btn btn-primary btn-sm flex-grow-1" %>
+                    <button type="button" class="btn btn-outline-secondary btn-sm flex-grow-1" onclick="toggleRename('<%= document.id %>')">Cancel</button>
+                  </div>
                 <% end %>
               </div>
 
@@ -128,6 +130,11 @@
   .italic {
     font-style: italic;
   }
+  @media (min-width: 768px) {
+    .w-md-auto {
+      width: auto !important;
+    }
+  }
 </style>
 
 <script>
@@ -138,7 +145,6 @@
     if (renameForm.classList.contains('d-none')) {
       renameForm.classList.remove('d-none');
       titleContainer.classList.add('d-none');
-      // Focus the input
       renameForm.querySelector('input[type="text"]').focus();
     } else {
       renameForm.classList.add('d-none');

@@ -1404,3 +1404,103 @@ h6 {
     }
   }
 }
+
+// Comprehensive Mobile Optimization
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  // Typography
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.75rem !important;
+  }
+
+  // Cards
+  .card-body {
+    padding: 1.5rem !important;
+  }
+
+  .upload-card .card-body {
+    padding: 2rem 1.5rem !important;
+  }
+
+  // Header Actions
+  .d-flex.justify-content-between.align-items-center {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem;
+    
+    .btn, .dropdown {
+      width: 100%;
+    }
+    
+    .btn {
+      text-align: left;
+    }
+    
+    .dropdown-toggle {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  // Library Grid
+  .row.g-4 {
+    --bs-gutter-y: 1.5rem;
+  }
+
+  // Feature Icons
+  .feature-icon-bg, .upload-icon-bg {
+    width: 60px !important;
+    height: 60px !important;
+    svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+
+  // Step Numbers (How It Works)
+  .step-badge {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.25rem !important;
+  }
+
+  // Summary Content
+  .abstract-content {
+    padding: 1rem !important;
+  }
+
+  .key-points-list li {
+    margin-bottom: 1.25rem !important;
+  }
+
+  // Footer Newsletter
+  .footer {
+    .input-group {
+      flex-direction: column;
+      gap: 0.5rem;
+      
+      .form-control, .btn {
+        border-radius: 0.5rem !important;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Tablet Optimization
+@media (min-width: 577px) and (max-width: 991px) {
+  .section-title {
+    font-size: 1.75rem !important;
+  }
+}
