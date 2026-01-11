@@ -103,14 +103,16 @@ jobs:
       - *ruby_docker
       - image: postgres:17-alpine # Specifying that we are using PostgreSQL 17 for the database in the Rails app for testing
         environment:
-          POSTGRES_USER: circleci
-          POSTGRES_PASSWORD: circleci
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: simplyresearch_test
           POSTGRES_HOST_AUTH_METHOD: trust
 
     environment:
       RAILS_ENV: test
-      DATABASE_URL: postgresql://circleci:circleci@localhost:5432/simplyresearch_test
+      DB_HOST: localhost
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
 
     steps:
       - attach_workspace:
@@ -123,7 +125,7 @@ jobs:
           name: Wait for PostgreSQL to be ready
           command: |
             for i in `seq 1 30`; do
-              pg_isready -h localhost -U circleci && break
+              pg_isready -h localhost -U postgres && break
               echo "Waiting for PostgreSQL to start..."
               sleep 1
             done
