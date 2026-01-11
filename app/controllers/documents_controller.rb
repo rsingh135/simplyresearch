@@ -11,6 +11,12 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_admin.documents.new(document_params)
+    
+    # Provide a default title if none is given
+    if @document.title.blank?
+      @document.title = "Research Paper - #{Time.current.strftime('%b %d, %Y')}"
+    end
+
     if @document.save
       # Set initial status to 'pending' so we know the job hasn't started yet
       @document.update(status: "pending")
@@ -74,6 +80,21 @@ class DocumentsController < ApplicationController
       key_points: @document.key_points,
       presentation_url: @document.presentation_url
     }
+  end
+
+  def update
+    @document = current_admin.documents.find(params[:id])
+    if @document.update(document_params)
+      redirect_to documents_path, notice: "Document title was successfully updated."
+    else
+      redirect_to documents_path, alert: "Failed to update document title."
+    end
+  end
+
+  def destroy
+    @document = current_admin.documents.find(params[:id])
+    @document.destroy
+    redirect_to documents_path, notice: "Document was successfully deleted.", status: :see_other
   end
 
   private

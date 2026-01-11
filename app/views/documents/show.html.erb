@@ -3,10 +3,43 @@
   <div class="row mb-4">
     <div class="col-12">
       <div class="mb-4">
-        <%= link_to root_path, class: "btn btn-outline-secondary mb-3" do %>
-          <i class="bi bi-arrow-left me-1"></i> Back to Uploads
-        <% end %>
-        <h1 class="section-title mb-2"><%= @document.title.present? ? @document.title : "Research Paper" %></h1>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <%= link_to documents_path, class: "btn btn-outline-secondary" do %>
+            <i class="bi bi-arrow-left me-1"></i> Back to Library
+          <% end %>
+          
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+              <li>
+                <button class="dropdown-item" onclick="toggleRename()">
+                  <i class="bi bi-pencil me-2"></i> Rename
+                </button>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to document_path(@document), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this research paper?" }, class: "dropdown-item text-danger" do %>
+                  <i class="bi bi-trash me-2"></i> Delete
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="title-container">
+          <h1 class="section-title mb-2"><%= @document.title.present? ? @document.title : "Research Paper" %></h1>
+        </div>
+
+        <div id="rename-form" class="d-none mb-3">
+          <%= form_with(model: @document, class: "d-flex gap-2 align-items-center") do |f| %>
+            <%= f.text_field :title, class: "form-control form-control-lg", value: @document.title, style: "max-width: 400px;" %>
+            <%= f.submit "Save", class: "btn btn-primary" %>
+            <button type="button" class="btn btn-outline-secondary" onclick="toggleRename()">Cancel</button>
+          <% end %>
+        </div>
+
         <p class="text-muted mb-0">Uploaded on <%= @document.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
       </div>
     </div>
@@ -37,7 +70,6 @@
     </div>
     
     <script>
-      // AJAX polling for presentation generation
       (function() {
         const docId = '<%= @document.id %>';
         const statusUrl = '<%= status_document_path(@document, format: :json) %>';
@@ -63,7 +95,6 @@
             const currentStatus = data.status || 'generating_presentation';
             const finalStatuses = ['presentation_generated', 'presentation_failed'];
             
-            // If status changed to a final state, reload the page to show result
             if (finalStatuses.includes(currentStatus)) {
               clearInterval(pollInterval);
               setTimeout(() => {
@@ -76,10 +107,7 @@
           });
         }
         
-        // Poll every 3 seconds
         pollInterval = setInterval(checkStatus, 3000);
-        
-        // Also check immediately
         checkStatus();
       })();
     </script>
@@ -109,7 +137,6 @@
   <% elsif @document.status == "generated" %>
     <div class="row">
       <div class="col-lg-8">
-        <!-- Summary Section -->
         <div class="card shadow-sm mb-4">
           <div class="card-header">
             <h3 class="card-title mb-0">
@@ -138,7 +165,6 @@
       </div>
       
       <div class="col-lg-4">
-        <!-- Action Card -->
         <div class="card shadow-sm action-card">
           <div class="card-body text-center p-4">
             <div class="mb-4">
@@ -191,7 +217,7 @@
               </div>
             </div>
             <h3 class="section-title mb-3 text-danger">Processing Failed</h3>
-            <p class="section-text text-muted mb-4">An error occurred while processing your document. Please check your PDF file and try uploading again.</p>
+            <p class="section-text text-muted mb-4">An error occurred while processing your document.</p>
             <%= link_to "Upload a New Document", root_path, class: "btn btn-primary btn-lg" %>
           </div>
         </div>
@@ -210,16 +236,10 @@
                 </div>
               </div>
               <h3 class="section-title mb-3">Processing Your Document</h3>
-              <p class="section-text text-muted mb-4">Our AI is analyzing your research paper and generating a comprehensive summary. This may take a few moments.</p>
+              <p class="section-text text-muted mb-4">Our AI is analyzing your research paper.</p>
               <div class="progress mb-3" style="height: 8px;">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%"></div>
               </div>
-              <small class="text-muted">Please don't close this page while processing...</small>
-              <% if @document.status.nil? || @document.status == "" %>
-                <div class="mt-3">
-                  <small class="text-warning d-block">Note: Processing hasn't started yet. If this continues, the background job queue may not be running.</small>
-                </div>
-              <% end %>
             </div>
           </div>
         </div>
@@ -227,19 +247,11 @@
     </div>
     
     <script>
-      // AJAX polling - much better than full page reloads!
       (function() {
         const docId = '<%= @document.id %>';
         const statusUrl = '<%= status_document_path(@document, format: :json) %>';
         const docUrl = '<%= document_path(@document) %>';
         let pollInterval;
-        let startTime = localStorage.getItem('doc_processing_start_' + docId);
-        const now = new Date().getTime();
-        const maxWaitTime = 300000; // 5 minutes in milliseconds
-        
-        if (!startTime) {
-          localStorage.setItem('doc_processing_start_' + docId, now.toString());
-        }
         
         function checkStatus() {
           fetch(statusUrl, {
@@ -250,69 +262,40 @@
             },
             credentials: 'same-origin'
           })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to fetch status');
-            }
-            return response.json();
-          })
+          .then(response => response.json())
           .then(data => {
             const currentStatus = data.status || 'pending';
             const finalStatuses = ['generated', 'presentation_generated', 'processing_failed', 'presentation_failed'];
             
-            // Check timeout
-            if (startTime) {
-              const elapsed = new Date().getTime() - parseInt(startTime);
-              if (elapsed > maxWaitTime) {
-                clearInterval(pollInterval);
-                localStorage.removeItem('doc_processing_start_' + docId);
-                showTimeoutError();
-                return;
-              }
-            }
-            
-            // If status changed to a final state, reload the page to show full content
             if (finalStatuses.includes(currentStatus)) {
               clearInterval(pollInterval);
-              localStorage.removeItem('doc_processing_start_' + docId);
-              // Smooth reload after a brief delay to show completion
               setTimeout(() => {
                 window.location.href = docUrl;
               }, 500);
             }
           })
-          .catch(error => {
-            console.error('Error checking status:', error);
-            // Continue polling even on error (might be temporary network issue)
-          });
+          .catch(error => console.error('Error checking status:', error));
         }
         
-        function showTimeoutError() {
-          const container = document.getElementById('processing-status-container');
-          if (container) {
-            container.innerHTML = `
-              <div class="row justify-content-center">
-                <div class="col-lg-6">
-                  <div class="card border-danger shadow-sm">
-                    <div class="card-body text-center p-5">
-                      <h3 class="section-title text-danger mb-3">Processing Timeout</h3>
-                      <p class="section-text text-muted mb-4">Processing is taking longer than expected. This may indicate the background job queue is not running. Please check your server logs or contact support.</p>
-                      <a href="<%= root_path %>" class="btn btn-primary btn-lg">Go Back to Home</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-          }
-        }
-        
-        // Poll every 3 seconds
         pollInterval = setInterval(checkStatus, 3000);
-        
-        // Also check immediately
         checkStatus();
       })();
     </script>
   <% end %>
 </div>
 
+<script>
+  function toggleRename() {
+    const titleContainer = document.getElementById('title-container');
+    const renameForm = document.getElementById('rename-form');
+    
+    if (renameForm.classList.contains('d-none')) {
+      renameForm.classList.remove('d-none');
+      titleContainer.classList.add('d-none');
+      renameForm.querySelector('input[type="text"]').focus();
+    } else {
+      renameForm.classList.add('d-none');
+      titleContainer.classList.remove('d-none');
+    }
+  }
+</script>
