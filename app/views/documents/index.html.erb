@@ -1,0 +1,100 @@
+<div class="container py-5">
+  <div class="row mb-5 align-items-center">
+    <div class="col-md-6">
+      <h1 class="section-title mb-0">My Research Library</h1>
+      <p class="text-muted mt-2">Manage and view all your processed research papers</p>
+    </div>
+    <div class="col-md-6 text-md-end">
+      <%= link_to root_path, class: "btn btn-primary btn-lg" do %>
+        <i class="bi bi-plus-lg me-2"></i>Upload New Paper
+      <% end %>
+    </div>
+  </div>
+
+  <% if @documents.any? %>
+    <div class="row g-4">
+      <% @documents.each do |document| %>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow-sm feature-card">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="status-badge">
+                  <% case document.status %>
+                  <% when 'pending', 'processing', 'generating_presentation' %>
+                    <span class="badge bg-info text-white">
+                      <i class="bi bi-cpu me-1"></i> Processing
+                    </span>
+                  <% when 'generated', 'presentation_generated' %>
+                    <span class="badge bg-success text-white">
+                      <i class="bi bi-check-circle me-1"></i> Ready
+                    </span>
+                  <% when 'processing_failed', 'presentation_failed' %>
+                    <span class="badge bg-danger text-white">
+                      <i class="bi bi-exclamation-triangle me-1"></i> Failed
+                    </span>
+                  <% else %>
+                    <span class="badge bg-secondary text-white">
+                      <i class="bi bi-file-earmark me-1"></i> Uploaded
+                    </span>
+                  <% end %>
+                </div>
+                <small class="text-muted"><%= time_ago_in_words(document.created_at) %> ago</small>
+              </div>
+
+              <h4 class="card-title mb-3 text-truncate" title="<%= document.title.present? ? document.title : 'Untitled Research Paper' %>">
+                <%= document.title.present? ? document.title : "Untitled Research Paper" %>
+              </h4>
+
+              <div class="mb-4">
+                <% if document.summary.present? %>
+                  <p class="card-text text-muted line-clamp-3">
+                    <%= truncate(document.summary, length: 120) %>
+                  </p>
+                <% else %>
+                  <p class="card-text text-muted italic">
+                    Summary will appear once processing is complete.
+                  </p>
+                <% end %>
+              </div>
+
+              <div class="d-grid mt-auto">
+                <%= link_to document_path(document), class: "btn btn-outline-primary" do %>
+                  View Details <i class="bi bi-arrow-right ms-1"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="row justify-content-center py-5">
+      <div class="col-lg-6 text-center">
+        <div class="mb-4">
+          <div class="upload-icon-bg mx-auto" style="width: 100px; height: 100px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-folder2-open text-primary" viewBox="0 0 16 16">
+              <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 0 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="section-title">Your library is empty</h3>
+        <p class="text-muted mb-4">Start by uploading your first research paper to see it here.</p>
+        <%= link_to root_path, class: "btn btn-primary btn-lg" do %>
+          <i class="bi bi-cloud-arrow-up me-2"></i>Upload Your First Paper
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+  .italic {
+    font-style: italic;
+  }
+</style>

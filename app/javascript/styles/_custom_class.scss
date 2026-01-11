@@ -11,7 +11,7 @@ body {
     "Segoe UI",
     Roboto,
     sans-serif;
-  color: #2c3e50 !important; // Dark text for readability
+  color: #1a1a1a !important; // Changed from #2c3e50 to #1a1a1a (Dark Charcoal) for better harmony with orange/cream
 }
 
 // Ensure html element also has cream background
@@ -250,7 +250,7 @@ h6 {
 // Hero Section - Light Theme (Base44 inspired)
 .hero-section {
   background: transparent;
-  color: #2c3e50;
+  color: #1a1a1a;
   border-radius: 0 0 2rem 2rem;
   margin-bottom: 4rem;
   padding: 5rem 0 1rem;
@@ -731,9 +731,19 @@ h6 {
   }
 
   &.bg-info {
-    background: #17a2b8 !important;
+    background: #d97706 !important; // Warm amber instead of blue
     color: white !important;
   }
+}
+
+// Override text-info to be warm amber
+.text-info {
+  color: #d97706 !important;
+}
+
+// Override border-info to be warm amber
+.border-info {
+  border-color: #d97706 !important;
 }
 
 // Override Bootstrap background utility classes

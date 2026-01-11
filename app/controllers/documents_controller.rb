@@ -1,6 +1,10 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_admin!
 
+  def index
+    @documents = current_admin.documents.order(created_at: :desc)
+  end
+
   def new
     @document = current_admin.documents.new
   end

@@ -13,6 +13,12 @@
             <%= link_to 'Home', root_path, class:"nav-link"%>
         </li>
 
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+              <%= link_to 'My Library', documents_path, class:"nav-link"%>
+          </li>
+        <% end %>
+
         <li class="nav-item">
             <%= link_to 'How It Works', home_about_path, class:"nav-link"%>
         </li>
