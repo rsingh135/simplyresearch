@@ -76,6 +76,7 @@ class DocumentsController < ApplicationController
 
     render json: {
       status: @document.status || "pending",
+      processing_step: @document.processing_step || "Queued...",
       summary: @document.summary,
       key_points: @document.key_points,
       presentation_url: @document.presentation_url
