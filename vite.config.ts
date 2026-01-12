@@ -1,16 +1,23 @@
 import { defineConfig } from "vite";
 import RubyPlugin from "vite-plugin-ruby";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
   plugins: [
     RubyPlugin(),
-    react(), // ← Add the React plugin
+    react(),
   ],
-  build: {
-    rollupOptions: {
-      input: {
-        application: "./app/javascript/entrypoints/application.jsx",
+  resolve: {
+    alias: {
+      "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Allow importing from node_modules
+        includePaths: [path.resolve(__dirname, "node_modules")],
       },
     },
   },

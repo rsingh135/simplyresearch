@@ -100,3 +100,5 @@ group :development do
 end
 
 gem "rack-attack", "~> 6.8"
+
+gem "dockerfile-rails", ">= 1.7", :group => :development

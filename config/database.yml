@@ -32,31 +32,12 @@ test:
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  primary:
+  primary: &primary_production
     <<: *default
-    database: <%= ENV["DB_PRIMARY_DATABASE"] || "your_app_name_production_primary" %>
-    host: <%= ENV["DB_PRIMARY_HOST"] || "primary_db" %>
-    # Ensure your production username and password are set as environment variables
-    username: <%= ENV["DB_PRIMARY_USERNAME"] %>
-    password: <%= ENV["DB_PRIMARY_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>
   cache:
-    <<: *default
-    database: <%= ENV["DB_CACHE_DATABASE"] || "your_app_name_production_cache" %>
-    host: <%= ENV["DB_CACHE_HOST"] || "cache_db" %>
-    migrations_paths: db/cache_migrate
-    username: <%= ENV["DB_CACHE_USERNAME"] %>
-    password: <%= ENV["DB_CACHE_PASSWORD"] %>
-  queue:
-    <<: *default
-    database: <%= ENV["DB_QUEUE_DATABASE"] || "your_app_name_production_queue" %>
-    host: <%= ENV["DB_QUEUE_HOST"] || "queue_db" %>
-    migrations_paths: db/queue_migrate
-    username: <%= ENV["DB_QUEUE_USERNAME"] %>
-    password: <%= ENV["DB_QUEUE_PASSWORD"] %>
+    <<: *primary_production
   cable:
-    <<: *default
-    database: <%= ENV["DB_CABLE_DATABASE"] || "your_app_name_production_cable" %>
-    host: <%= ENV["DB_CABLE_HOST"] || "cable_db" %>
-    migrations_paths: db/cable_migrate
-    username: <%= ENV["DB_CABLE_USERNAME"] %>
-    password: <%= ENV["DB_CABLE_PASSWORD"] %>
+    <<: *primary_production
+  queue:
+    <<: *primary_production

@@ -131,6 +131,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
     docile (1.4.1)
+    dockerfile-rails (1.7.10)
+      rails (>= 3.0.0)
     dotenv (3.1.8)
     drb (2.2.3)
     dry-cli (1.2.0)
@@ -595,6 +597,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9, >= 4.9.4)
+  dockerfile-rails (>= 1.7)
   foreman (~> 0.88)
   gemini-ai (~> 4.3)
   good_job

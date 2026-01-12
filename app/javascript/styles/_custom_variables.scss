@@ -1,31 +1,17 @@
-// base body colors
+// Base body colors
 $body-bg: #1a1a1a;
-$body-color: $gray-900;
+$body-color: $gray-100;
 
+// Theme colors
 $primary: #c77dff;
 $secondary: #7b2cbf;
-// $success:       #B2FFA9;
 $info: #c77dff;
 $warning: #b2ffa9;
-// $danger:        $red;
-// $light:         $gray-100;
-// $dark:          $gray-900;
-
-$theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  //   "success":    $success,
-  "info": $info,
-  "warning": $warning,
-  //   "danger":     $danger,
-  //   "light":      $light,
-   //   "dark":       $dark
-);
 
 // Navbar Settings
-$nav-link-font-weight: $font-weight-medium;
+$nav-link-font-weight: 500;
 $navbar-nav-link-padding-x: 1.8rem;
 
 // Text Settings
-$headings-color: $light;
-$body-color: $light;
+$headings-color: $gray-100;
+$link-color: $primary;

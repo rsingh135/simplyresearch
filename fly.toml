@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for simplyresearch on 2026-01-11T17:59:53-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'simplyresearch'
+primary_region = 'ord'
+console_command = '/rails/bin/rails console'
+
+[build]
+
+[env]
+  PORT = "8080"
+
+[processes]
+  app = "./bin/rails server -b 0.0.0.0"
+  job = "bundle exec good_job start"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
