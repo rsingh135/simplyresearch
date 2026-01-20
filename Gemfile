@@ -70,6 +70,9 @@ gem "gemini-ai", "~> 4.3"
 gem "google-apis-slides_v1", "~> 0.31.0"
 gem "google-apis-drive_v3", "~> 0.69.0"
 
+# Used for RISC (Cross-Account Protection) JWT token validation
+gem "jwt", "~> 2.7"
+
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false

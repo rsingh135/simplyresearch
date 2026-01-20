@@ -9,6 +9,9 @@ class PresentationGeneratorJob < ApplicationJob
 
 
   def perform(document_id, admin_id = nil)
+    $stdout.puts "=== PresentationGeneratorJob START: Document #{document_id}, Admin #{admin_id} ==="
+    $stdout.flush
+    
     # Find the document and admin records.
     document = Document.find_by(id: document_id)
     unless document
@@ -27,19 +30,26 @@ class PresentationGeneratorJob < ApplicationJob
 
     begin
       document.update!(processing_step: "Connecting to Google Slides...")
+      $stdout.puts "PresentationGeneratorJob: Retrieving credentials for Admin ID: #{admin.id}"
+      $stdout.puts "Admin has access_token: #{admin.access_token.present?}, refresh_token: #{admin.refresh_token.present?}"
+      $stdout.flush
+      
       # Retrieve credentials from the admin record.
       credentials = admin.credentials
       unless credentials
         raise "Admin (ID: #{admin_id || document.admin_id}) does not have valid Google credentials."
       end
+      $stdout.puts "PresentationGeneratorJob: Credentials retrieved successfully"
+      $stdout.flush
 
 
       # Initialize Google Slides service
+      Rails.logger.info "PresentationGeneratorJob: Initializing Google Slides service"
       slides_service = Google::Apis::SlidesV1::SlidesService.new
       slides_service.authorization = credentials
 
-
       # Initialize Google Drive service
+      Rails.logger.info "PresentationGeneratorJob: Initializing Google Drive service"
       drive_service = Google::Apis::DriveV3::DriveService.new
       drive_service.authorization = credentials
 
@@ -371,10 +381,18 @@ class PresentationGeneratorJob < ApplicationJob
 
 
     rescue Google::Apis::AuthorizationError => e
-      Rails.logger.error "=== Google OAuth Authorization Error ==="
-      document.update!(status: "presentation_failed", processing_step: "Failed: Authorization error")
+      error_msg = "Google OAuth Authorization Error: #{e.class}: #{e.message}"
+      $stdout.puts "=== #{error_msg} ==="
+      $stdout.puts "Backtrace: #{e.backtrace.first(5).join("\n")}"
+      $stdout.flush
+      Rails.logger.error error_msg
+      document.update!(status: "presentation_failed", processing_step: "Failed: Authorization error - #{e.message}")
     rescue StandardError => e
-      Rails.logger.error "=== Unexpected error generating presentation ==="
+      error_msg = "PresentationGeneratorJob ERROR: #{e.class}: #{e.message}"
+      $stdout.puts "=== #{error_msg} ==="
+      $stdout.puts "Backtrace: #{e.backtrace.first(5).join("\n")}"
+      $stdout.flush
+      Rails.logger.error error_msg
       document.update!(status: "presentation_failed", processing_step: "Failed: #{e.message}")
     end
   end

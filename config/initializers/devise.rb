@@ -313,6 +313,13 @@ Devise.setup do |config|
 
   # Only configure Google OAuth if credentials are available (skip in CI/test environments)
   if Rails.application.credentials.google.present?
-    config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret], prompt: "select_account", image_aspect_ratio: "square", image_size: 256, scope: "email,profile,drive.file"
+    config.omniauth :google_oauth2,
+      Rails.application.credentials.google[:client_id],
+      Rails.application.credentials.google[:client_secret],
+      access_type: "offline",
+      prompt: "consent",
+      image_aspect_ratio: "square",
+      image_size: 256,
+      scope: "email,profile,https://www.googleapis.com/auth/drive.file"
   end
 end

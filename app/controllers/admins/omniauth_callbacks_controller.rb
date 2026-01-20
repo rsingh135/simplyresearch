@@ -5,15 +5,16 @@ class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if admin.present?
       # Capture the access and refresh tokens from the omniauth hash
-      # The auth method is a helper you've already defined, so we'll use that.
       access_token = auth.credentials.token
       refresh_token = auth.credentials.refresh_token
+      expires_at = auth.credentials.expires_at ? Time.at(auth.credentials.expires_at) : nil
 
       # Save the tokens to the admin record
       admin.update!(
         access_token: access_token,
-        # Only update the refresh token if it's present. It's often nil after the first login.
-        refresh_token: refresh_token || admin.refresh_token
+        # Only update the refresh token if it's present (with consent prompt, it should always be present)
+        refresh_token: refresh_token || admin.refresh_token,
+        expires_at: expires_at
       )
 
       sign_out_all_scopes

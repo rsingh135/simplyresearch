@@ -42,3 +42,23 @@ node_modules
 *.local
 
 coverage/
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Google Cloud service account keys (never commit these!)
+*.json
+!package.json
+!package-lock.json
+!*.schema.json
+!config/vite.json
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+*.swp
+*.swo

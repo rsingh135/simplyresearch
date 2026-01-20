@@ -3,6 +3,11 @@ Rails.application.routes.draw do
              controllers: {
                omniauth_callbacks: "admins/omniauth_callbacks"
              }
+
+  # Google Cross-Account Protection (RISC) endpoint
+  # See: https://developers.google.com/identity/protocols/risc
+  post "/risc/events", to: "risc_events#create"
+
   resources :users
 
   # Update the documents resource to include the new route

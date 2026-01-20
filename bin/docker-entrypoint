@@ -6,9 +6,17 @@ if [ -z "${LD_PRELOAD+x}" ]; then
     export LD_PRELOAD
 fi
 
-# If running the rails server then create or migrate existing database
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+# If running the rails server (directly or via thruster) then prepare database
+# Check if any argument contains "rails" and "server" pattern
+if [[ "$*" == *"rails"*"server"* ]]; then
+  echo "Running db:prepare for Rails server..."
   ./bin/rails db:prepare
+fi
+
+# If running good_job, just ensure migrations are up (don't create db, app should do that)
+if [[ "$*" == *"good_job"* ]]; then
+  echo "Running db:migrate for Good Job worker..."
+  ./bin/rails db:migrate || true
 fi
 
 exec "${@}"
